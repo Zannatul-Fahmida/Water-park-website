@@ -1,10 +1,12 @@
 import React from 'react';
-import Client from '../Client/Client';
+import HappyClient from '../HappyClient/HappyClient';
+import Holiday from '../Holiday/Holiday';
 
 const Home = () => {
     return (
         <div>
-            <Client />
+            <Holiday />
+            <HappyClient />
         </div>
     );
 };
