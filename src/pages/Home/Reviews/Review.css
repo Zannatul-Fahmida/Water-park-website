@@ -60,8 +60,9 @@
   .slick-slide {
     padding: 20px;
   }
-  /* @media (max-width: 672px) {
-    .slick-slide {
-      width: 100%;
-    }
-  } */
+  @media only screen and (max-width: 672px) {
+    img.slick-arrow {
+      width: 40px;
+      height: 40px;
+  }
+  }
