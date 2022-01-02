@@ -24,4 +24,8 @@
     .img-gallery .title p {
         width: auto;
     }
+    .img-gallery img {
+        width: 330px !important;
+        object-fit: cover;
+    }
 }
