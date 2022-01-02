@@ -110,7 +110,7 @@ const ImgGallery = () => {
                     margin: "auto",
                     overflow: "auto"
                 }}>
-                    <Gallery images={IMAGES} enableImageSelection={false} onSelectImage={false} tileViewportStyle={myTileViewportStyleFn} />
+                    <Gallery images={IMAGES} enableImageSelection={false} tileViewportStyle={myTileViewportStyleFn} />
                 </div>
 
             </Container>

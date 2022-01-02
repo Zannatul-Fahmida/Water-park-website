@@ -1,9 +1,11 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
+import { postPackageBooking } from '../../redux/slices/BookingSlice';
 import './Banner.css'
 
 const Banner = () => {
-
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
@@ -12,7 +14,8 @@ const Banner = () => {
       } = useForm();
 
     const onSubmit = (data) => {
-           console.log(data)
+           dispatch(postPackageBooking(data))
+           reset();
         };
     return (
             <div className='banner-main text-white'>
