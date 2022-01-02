@@ -18,6 +18,7 @@ const HappyClient = () => {
                         end={8450}
                         duration={2}
                         delay={0}
+                        startOnMount={false}
                     /></span> +</h1>
                     <p className="fw-bold">Happy Visitors</p>
                 </Col>
