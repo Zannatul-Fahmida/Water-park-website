@@ -63,7 +63,7 @@ const Reviews = () => {
         nextArrow: <SlickArrowRight />,
     };
     return (
-        <div className="client-reviews py-5" id="reviews">
+        <div className="client-reviews py-5 px-3" id="reviews">
             <div className="container">
                 <h2>8450+ HAPPY VISITORS</h2>
                 {loading && <Spinner animation="border" variant="danger" />}
