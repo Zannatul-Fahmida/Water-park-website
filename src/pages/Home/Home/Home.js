@@ -7,13 +7,15 @@ import Footer from '../Footer/Footer';
 import HappyClient from '../HappyClient/HappyClient';
 import Holiday from '../Holiday/Holiday';
 import Subscriber from '../Subscriber/Subscriber';
+import EventPackage from '../EventPackages/EventPackage/EventPackage';
 
 const Home = () => {
     return (
         <div>
             <Banner/>
-            <Reviews />
             <ImgGallery />
+            <EventPackage />
+            <Reviews />
             <Holiday />
             <HappyClient />
             <Blog />
