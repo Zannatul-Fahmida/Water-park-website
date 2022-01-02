@@ -17,3 +17,6 @@
     background-color: transparent;
     border: none;
 }
+.information-btn:hover{
+    color: #0dcaf0;
+}
