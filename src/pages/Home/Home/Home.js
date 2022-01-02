@@ -11,9 +11,9 @@ import Subscriber from '../Subscriber/Subscriber';
 const Home = () => {
     return (
         <div>
+            <Banner/>
             <Reviews />
             <ImgGallery />
-            <Banner/>
             <Holiday />
             <HappyClient />
             <Blog />
