@@ -4,7 +4,7 @@
 
 }
 .site-name, .top-contact span{
-    color: rgb(52, 165, 127);
+    color: #0dcaf0;
 
 }
 .social-menu li{
@@ -15,9 +15,19 @@
     line-height: 30px;
     padding: 10px 15px;
     cursor: pointer;
+    transition: .7s;
+    
+}
+.social-menu li i{
+    background: rgb(96, 178, 245);
+    padding: 10px;
+    color: #fff;
+
 }
 .social-menu li :hover{
-    color: rgb(52, 165, 127);
+    color: #000;
+    transform: scale(1.1, 1.1);
+
 }
 
 .top-contact{

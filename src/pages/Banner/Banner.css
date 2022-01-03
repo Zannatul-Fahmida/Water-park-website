@@ -3,8 +3,6 @@
     background-size: cover;
 	background-position: center;
     padding: 150px 0;
-    position: relative;
-    z-index: 9;
 }
 .banner-overlay{
 	background-color: rgba(0, 0, 0, 0.507);

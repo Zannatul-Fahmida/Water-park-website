@@ -14,7 +14,6 @@ const Home = () => {
             <HappyClient />
             <Blog />
             <Subscriber/>
-            <Footer />
         </div>
     );
 };
