@@ -1,9 +1,9 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import { postPackageBooking } from '../../redux/slices/BookingSlice';
-import './Banner.css'
-
+import { postPackageBooking } from '../../../redux/slices/BookingSlice';
+// import { postPackageBooking } from '../../redux/slices/BookingSlice';
+import './Banner.css';
 const Banner = () => {
     const dispatch = useDispatch();
     const {
