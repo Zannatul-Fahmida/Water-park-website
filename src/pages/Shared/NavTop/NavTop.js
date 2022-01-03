@@ -23,7 +23,7 @@ const NavTop = () => {
                         <li><i className="fab fa-twitter-square"></i></li>
                         <li><i className="fab fa-instagram-square"></i></li>
                         <li><i className="fab fa-linkedin"></i></li>
-                    </div>
+                        </div>
                     </div>
                     <div className="col-lg-4">
                         <div className='top-contact text-end fw-bolder'>

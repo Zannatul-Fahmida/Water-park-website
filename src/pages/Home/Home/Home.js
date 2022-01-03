@@ -20,7 +20,7 @@ const Home = () => {
             <HappyClient />
             <Blog />
             <Subscriber />
-            <Footer />
+            {/* <Footer /> */}
         </div>
     );
 };

@@ -76,7 +76,7 @@ const Banner = () => {
                             <input
                             type="submit"
                             value="Booking"
-                            className="btn btn-success w-50"
+                            className="btn btn-info w-50"
                             />
                         </form>
                     </div>

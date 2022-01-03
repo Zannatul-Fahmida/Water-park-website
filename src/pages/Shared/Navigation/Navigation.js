@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
+import ProfilePopper from '../../../components/ProfilePopper/ProfilePopper';
 import useFirebase from '../../../hooks/useFirebase';
 
 const Navigation = () => {
@@ -38,8 +39,9 @@ const Navigation = () => {
               {
                 user.email ?
                 <>
-                <p className="mb-0 fw-bold">{user.displayName}</p>
-                <Button className="ms-3 text-white fw-bold" variant="info" onClick={logOut}>Log Out</Button>
+                <div className="user-img">
+                                <ProfilePopper/>
+                            </div>
                 </>
                 :
                   <>
