@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import Slider from "react-slick";
+import { fetchReviews } from '../../../redux/slices/BookingSlice';
 import './Review.css';
 import ReviewCard from './ReviewCard/ReviewCard';
 
 
 const Reviews = () => {
-    const [loading, setLoading] = useState(true);
-    const [reviews, setReviews] = useState([]);
+    const [loading, setLoading] = useState(false);
+    // const [reviews, setReviews] = useState([]);
+    const dispatch = useDispatch();
     useEffect(() => {
+      dispatch(fetchReviews());
+    },[])
+    const reviews = useSelector((state) => state.booking.reviews)
+    console.log(reviews);
+  /*   useEffect(() => {
         fetch('https://safe-crag-22535.herokuapp.com/review')
             .then(res => res.json())
             .then(data => {
@@ -17,7 +26,7 @@ const Reviews = () => {
                 setLoading(false);
             })
             .catch(error => toast.error(error.message))
-    }, [])
+    }, []) */
     const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
         <img src="https://cdn-icons-png.flaticon.com/512/271/271218.png" alt="prevArrow" {...props} />
     );
