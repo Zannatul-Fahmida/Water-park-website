@@ -8,7 +8,6 @@ import NavTop from './pages/Shared/NavTop/NavTop';
 function App() {
   return (
     <div className="App">
-
       <NavTop></NavTop>
       <Navigation></Navigation>
       <Routes>
