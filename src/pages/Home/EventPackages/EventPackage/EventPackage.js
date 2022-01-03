@@ -1,8 +1,7 @@
-import { faMeetup } from '@fortawesome/free-brands-svg-icons';
-import { faBirthdayCake, faBusinessTime, faCheck, faCross, faHandHolding, faHandHoldingHeart, faPaperPlane, faParking, faPeopleArrows, faPeopleCarry, faPlane, faRocket, faTicketAlt, faTimes, faWater } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faTicketAlt, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Button } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import './EventPackage.css';
 

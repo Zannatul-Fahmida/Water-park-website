@@ -115,7 +115,7 @@ const ImgGallery = () => {
                     margin: "auto",
                     overflow: "auto"
                 }}>
-                    <Fade bottom duration={2000} distance="40px">
+                    <Fade bottom duration={1000} distance="40px">
                     <Gallery images={IMAGES} enableImageSelection={false} tileViewportStyle={myTileViewportStyleFn} />
                     </Fade>
                 </div>
