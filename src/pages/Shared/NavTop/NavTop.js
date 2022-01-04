@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavTop.css'
-import logo from '../../../images/logo00.jpg'
+import logo from '../../../images/268400530_373968071167259_3189583390863392829_n.png';
 
 const NavTop = () => {
     return (
@@ -11,8 +11,8 @@ const NavTop = () => {
                         <a className="navbar-brand d-inline-block" href="/">
                         <div className="logo">
                                 <div className='d-flex align-items-center'>
-                                <img className='img-fluid rounded-circle' src={logo} alt="" />
-                                <h3 className='ms-2 site-name'> Water Kingdom</h3>
+                                <img className='img-fluid' src={logo} alt="" />
+                                <h3 className='ms-2 text-dark'>Water <span className="text-info">Kingdom</span></h3>
                                 </div>
                             </div>
                         </a>

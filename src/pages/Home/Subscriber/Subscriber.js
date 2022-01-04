@@ -11,7 +11,7 @@ const Subscriber = () => {
                     <div className="col-lg-6">
                     <form className="d-flex">
                         <input className="form-control me-2 p-3" type="email" placeholder="Your Email Address" aria-label="Search"/>
-                        <button className="btn btn-lg btn-outline-success" type="submit">Subscribe</button>
+                        <button className="btn btn-lg btn-info text-white" type="submit">Subscribe</button>
                     </form>
                     </div>
                     <div className="col-lg-3"></div>

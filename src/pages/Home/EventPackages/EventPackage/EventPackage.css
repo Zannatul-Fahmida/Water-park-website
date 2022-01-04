@@ -5,15 +5,13 @@
 }
 .event-package .header-text {
     padding: 25px 0;
-    color: #0e4197;
 }
 .header-text h6 {
-    color: #4cbfa6;
+    color: #0dcaf0;
     font-size: 20px;
     font-family: pacifico,cursive!important;
 }
 .header-text h2 {
-    color: #5b82a3;
     font-size: 48px;
     font-weight: 700;
     font-family: 'IBM Plex Serif', serif;
@@ -32,7 +30,7 @@
     transform: scale(1.05);
 }
 .pricing-card .title {
-    background : #68f788;
+    background : #007ab3;
     padding: 20px 0;
 }
 .title .fa-icon {
@@ -53,7 +51,7 @@
 .price h4 {
     margin: 0;
     padding: 0;
-    color: #68f788;
+    color: #00881d;
     font-weight: 400;
     font-size: 30px;
 }
@@ -81,7 +79,7 @@
 .pricing-card .order-btn{
     text-decoration: none;
     padding: 10px 40px;
-    background: #68f788;
+    background: #007ab3;
     color: #fff;
     margin: 20px 0 10px;
     display: inline-block;
@@ -91,15 +89,15 @@
 }
 .package:nth-child(2) .title,
 .package:nth-child(2) .order-btn {
-    background: #ff5722;
+    background: #3dc7a9;
 }
 .package:nth-child(3) .title,
 .package:nth-child(3) .order-btn {
-    background: #ff7878;
+    background: #ff6060;
 }
 .package:nth-child(4) .title,
 .package:nth-child(4) .order-btn{
-    background: #4CBFA6;
+    background: #ae23ff;
 }
 .option ul li .fa-times {
     color: red;

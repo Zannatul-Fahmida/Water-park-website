@@ -12,7 +12,6 @@ import ManageAllProduct from './components/UserDashboard/ManageAllProduct/Manage
 import MyOrders from './components/UserDashboard/MyOrders/MyOrders';
 import About from './pages/Home/About/About';
 import Contact from './pages/Home/Contact/Contact';
-import Footer from './pages/Home/Footer/Footer';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import Signup from './pages/Login/SignUp/Signup';
@@ -20,6 +19,7 @@ import Navigation from './pages/Shared/Navigation/Navigation';
 import NavTop from './pages/Shared/NavTop/NavTop';
 import Payment from './components/UserDashboard/Payment/Payment';
 import PackageBooking from './pages/PackageBooking/PackageBooking';
+import Footer from './pages/Shared/Footer/Footer';
 
 function App() {
   return (
@@ -44,7 +44,6 @@ function App() {
           <Route path={`/dashboard/manageAllProduct`} element={ <ManageAllProduct />}> </Route>
         </Route>
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }
