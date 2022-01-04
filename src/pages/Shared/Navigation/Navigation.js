@@ -34,7 +34,7 @@ const Navigation = () => {
       </ul>
       <div>
 
-    <div className="d-flex">
+    <div className="d-flex ">
         <button className='btn  px-3 fs-6'>Sign in</button>
         <button className='btn  px-3 fs-6'>Sign up</button>
     </div>
