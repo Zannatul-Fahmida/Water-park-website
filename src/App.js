@@ -20,6 +20,7 @@ import Navigation from './pages/Shared/Navigation/Navigation';
 import NavTop from './pages/Shared/NavTop/NavTop';
 import Payment from './components/UserDashboard/Payment/Payment';
 import PackageBooking from './pages/PackageBooking/PackageBooking';
+import Update from './components/UserDashboard/Update/Update';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
           <Route path={`/dashboard/addProduct`} element={<AddProduct />}> </Route> 
           <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin /> }> </Route>
           <Route path={`/dashboard/manageAllProduct`} element={ <ManageAllProduct />}> </Route>
+          <Route path={`/dashboard/manageAllProduct/update/:id`} element={ <Update />}> </Route>
         </Route>
       </Routes>
       <Footer></Footer>

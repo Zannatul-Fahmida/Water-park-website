@@ -13,7 +13,7 @@ const ManageAllProduct = () => {
     const history = useNavigate();
 
     useEffect(() => {
-        fetch('https://safe-crag-22535.herokuapp.com/availableCars')
+        fetch('http://localhost:5000/rides')
             .then(res => res.json())
             .then(data => {
                 setCars(data);
@@ -51,7 +51,7 @@ const ManageAllProduct = () => {
         }).then(proceed => {
             if (proceed) {
                 const loading = toast.loading("Deleting...")
-                const url = `https://safe-crag-22535.herokuapp.com/deletedCar/${id}`
+                const url = `http://localhost:5000/rides/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
@@ -80,7 +80,7 @@ const ManageAllProduct = () => {
             return swal("Permission restriction!", "As a test-admin, you don't have permission to delete 6 core services. But you can delete your added services.", "info");
         }
         const uri = `update/${id}`;
-        history.push(uri)
+        history(uri)
     }
     return (
         <div>
@@ -93,23 +93,23 @@ const ManageAllProduct = () => {
                 <thead>
                     <tr>
                         <td>SL NO</td>
-                        <td>Car Photo</td>
-                        <td>Car Name</td>
+                        <td>Rides Photo</td>
+                        <td>Ride Name</td>
                         <td>Price</td>
                         <td>UPDATE</td>
                         <td>DELETE</td>
                     </tr>
                 </thead>
                 {loading ? <Spinner animation="border" variant="success" /> :
-                    cars.map((car, index) => (
+                    cars.map((pd, index) => (
                         <tbody>
                             <tr>
                                 <td>{index + 1}</td>
-                                <td style={{ width: '180px' }}><img src={car.img} style={{ width: '130px', height: '100px', borderRadius: '5px' }} alt="" /> </td>
-                                <td>{car.name?.toUpperCase()}</td>
-                                <td>{car.price}</td>
-                                <td><Button onClick={() => handleUpdate(car._id)} variant="warning bg-warning m-1">Update</Button></td>
-                                <td><Button onClick={() => handleDelete(car._id)} variant="danger bg-danger text-light m-1">Delete</Button></td>
+                                <td style={{ width: '180px' }}><img src={pd.img} style={{ width: '130px', height: '100px', borderRadius: '5px' }} alt="" /> </td>
+                                <td>{pd.name?.toUpperCase()}</td>
+                                <td>{pd.price}</td>
+                                <td><Button onClick={() => handleUpdate(pd._id)} variant="warning bg-warning m-1">Update</Button></td>
+                                <td><Button onClick={() => handleDelete(pd._id)} variant="danger bg-danger text-light m-1">Delete</Button></td>
                             </tr>
                         </tbody>
                     ))}

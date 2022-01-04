@@ -6,12 +6,12 @@ import { useNavigate, useParams } from 'react-router';
 
 const Update = () => {
     const { id } = useParams();
-    const [car, setCar] = useState({});
+    const [ride, setRide] = useState({});
     const { register, handleSubmit } = useForm();
     const history = useNavigate();                
     const onSubmit = data => {
         console.log(data)
-        const url = `https://safe-crag-22535.herokuapp.com/availableCars/${id}`
+        const url = `http://localhost:5000/rides/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -23,79 +23,79 @@ const Update = () => {
             .then(data => {
                 if (data.modifiedCount > 0) {
                     toast.success('Updated Successfully')
-                    setCar({})
+                    setRide({})
                 }
             })
-        history.push('/dashboard/manageAllCar')
+        history.push('/dashboard/manageAllride')
     };
-    console.log(car);
+    console.log(ride);
 
     useEffect(() => {
-        const url = `https://safe-crag-22535.herokuapp.com/availableCars/${id}`
+        const url = `http://localhost:5000/rides/${id}`
         fetch(url)
             .then(res => res.json())
-            .then(data => setCar(data))
+            .then(data => setRide(data))
     }, [id])
 
     return (
         <div className="container py-5">
-            <h2>Update <span style={{ color: 'orange' }}>{car.name}</span> Car Details</h2>
+            <h2>Update <span style={{ color: 'orange' }}>{ride.name}</span> ride Details</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-main" style={{ borderRadius: "15px", maxWidth: '85rem' }}>
                     <Row>
                         <Col style={{ width: '550px', margin: '0 auto' }} md={12} xs={12} className="pr-md-4">
                             <Row>
                                 <Col md={6} sm={12}>
-                                    <label>Car Name</label>
+                                    <label>Ride Name</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
-                                        defaultValue={car.name}
+                                        defaultValue={ride.name}
                                         {...register("name", { required: true })}
-                                        placeholder="Car Name"
+                                        placeholder="Ride Name"
                                     />
                                 </Col>
                                 <Col md={6} sm={12}>
-                                    <label>Mileage</label>
+                                    <label>Ride Code</label>
                                     <input
                                         type="text"
                                         className="our-form-input"
-                                        defaultValue={car.mileage}
+                                        defaultValue={ride.code}
                                         {...register("mileage", { required: true })}
-                                        placeholder="Car Mileage"
+                                        placeholder="Ride Code"
                                     />
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md={6} sm={12}>
-                                    <label>Car Price</label>
+                                    <label>Ride Price</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
-                                        defaultValue={car.price}
+                                        defaultValue={ride.price}
                                         {...register("price", { required: true })}
-                                        placeholder="Car Price"
+                                        placeholder="ride Price"
                                     />
                                 </Col>
                                 <Col md={6} sm={12}>
-                                    <label>Car Image</label>
+                                    <label>Ride Image</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
-                                        defaultValue={car.img}
+                                        defaultValue={ride.img}
                                         {...register("img", { required: true })}
-                                        placeholder="Put Car Image Link"
+                                        placeholder="Put Ride Image Link"
                                     />
                                 </Col>
                             </Row>
-                            <label>Car Details</label>
+                            <label>Ride Details</label>
                             <textarea
                                 type="textarea"
                                 style={{ height: '150px' }}
                                 className="our-form-input"
-                                defaultValue=""
+                                defaultValue={ride.description}
                                 {...register("details")}
-                                placeholder="Type Car Details"
+                                placeholder="Type Ride Details"
                             />
                             <br />
                             {/* <Button type="submit">Send</Button> */}
