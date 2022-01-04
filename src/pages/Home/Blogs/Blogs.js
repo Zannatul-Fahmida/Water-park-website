@@ -8,7 +8,7 @@ import './Blogs.css';
 const Blogs = () => {
     return (
         <div className="my-5">
-            <h6 className="text-info fw-bold">OUR BLOG</h6>
+            <h6 className="text-info blog-title">Our blog</h6>
             <h2>LATEST BLOG & ARTICLES</h2>
             <p className="text-secondary">Our Latest Article For Our clients</p>
             <Container>
