@@ -39,6 +39,9 @@ const Navigation = () => {
                 user.email ?
                 <>
                 <p className="mb-0 fw-bold">{user.displayName}</p>
+                <Link to="/">
+                <Button className="ms-3">Dashboard</Button>
+                </Link>
                 <Button className="ms-3 text-white fw-bold" variant="info" onClick={logOut}>Log Out</Button>
                 </>
                 :

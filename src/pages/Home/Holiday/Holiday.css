@@ -5,7 +5,8 @@
     background-position: center;
 }
 .holiday-overlay{  
-    background-color: rgba(0, 0, 0, 0.507);
+    /* background-color: rgba(0, 0, 0, 0.507); */
+    background-color: rgba(54, 31, 1, 0.377);
 }
 .holiday-container{
     padding-top: 100px;
