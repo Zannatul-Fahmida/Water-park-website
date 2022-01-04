@@ -23,7 +23,7 @@ const EventPackage = () => {
             "person": "20",
             "decoration": "Gaming Zone",
             "catering": "Jumping House",
-            "Boating": "Boating",
+            "Boating": "Boating"
         },
         {
             "packageName": "Full Package",
@@ -45,13 +45,13 @@ const EventPackage = () => {
     const [pricing, setPricing] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
-        fetch('https://eventmakerserver.herokuapp.com/pricing')
+        fetch('http://localhost:5000/packages')
             .then(res => res.json())
             .then(data => setPricing(data))
     }, [])
 
     const handleOrder = (id) => {
-        navigate(`/order/${id}`)
+        navigate(`/booking/${id}`)
     }
     return (
         <div className="event-package">
@@ -62,7 +62,7 @@ const EventPackage = () => {
                 </div>
                 <Row>
                     {
-                        pricingTable.map(price => <Col lg={3} md={4} sm={6} xs={12} className="package">
+                        pricing.map(price => <Col lg={3} md={4} sm={6} xs={12} className="package">
                             <div className="pricing-card">
                                 <div className="title">
                                     <FontAwesomeIcon className="fa-icon" icon={faTicketAlt}></FontAwesomeIcon>

@@ -4,6 +4,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import useFirebase from '../../../hooks/useFirebase';
+import "./MyOrder.css";
 
 const MyOrders = () => {
     const { user } = useFirebase();
@@ -12,7 +13,7 @@ const MyOrders = () => {
     console.log(myBookings);
 
     useEffect(() => {
-        fetch(`https://safe-crag-22535.herokuapp.com/myBooking/${user.email}`)
+        fetch(`http://localhost:5000/booking/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyBookings(data)
@@ -20,6 +21,9 @@ const MyOrders = () => {
             })
 
     }, [user.email])
+    const handlePay = (order) => {
+
+    }
     const handleDelete = (id) => {
         swal({
             title: "Are you sure?",
@@ -30,7 +34,7 @@ const MyOrders = () => {
         }).then(wantDelete => {
             if (wantDelete) {
                 const loadingId = toast.loading("Deleting...");
-                const url = `https://safe-crag-22535.herokuapp.com/deletedBooking/${id}`
+                const url = `http://localhost:5000/booking/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
@@ -39,7 +43,7 @@ const MyOrders = () => {
                         console.log(data);
                         toast.success('Deleted', {
                             id: loadingId,
-                          });
+                        });
                         if (data.deletedCount > 0) {
                             const remaining = myBookings.filter(booking => booking?._id !== id)
                             setMyBookings(remaining);
@@ -63,9 +67,9 @@ const MyOrders = () => {
                 <thead>
                     <tr>
                         <td>Name</td>
-                        <td>Car Name</td>
-                        <td>Address</td>
-                        <td>Test Drive Date</td>
+                        <td>Package Name</td>
+                        <td>Email</td>
+                        <td>Booking Date</td>
                         <td>Status</td>
                         <td>Cancel Order</td>
                     </tr>
@@ -75,17 +79,22 @@ const MyOrders = () => {
                         <tbody>
                             <tr>
                                 <td>{order.name}</td>
-                                <td>{order.CarName}</td>
-                                <td>{order.address}</td>
-                                <td>{order.testDriveDate}</td>
-                                <td><span className={order.status === "pending" ? "status pending" : order.status === "Pending" ? "status pending" : order.status === "On going" ? "status inprogress" : order.status === "Done" ? "status delivered" : null}>{order.status}</span></td>
-                                <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger m-1">Order Cancel</Button>
+                                <td>{order.packageName}</td>
+                                <td>{order.email.slice(0,8)}...</td>
+                                <td>{order.bookingDate}</td>
+                                <td>
+                                    <span className={order.status === "Pending" ? "status pending" : order.status === "On going" ? "status inprogress" : order.status === "Done" ? "status delivered" : null}>{order.status}</span>
+                                    <Button onClick={() => handlePay(order)} variant="outline-success" className='white-space-off'>Pay Now</Button>
+                                </td>
+                                <td>
+                                    <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger m-1" className='white-space-off'>Cancel</Button>
+                                </td>
                             </tr>
 
                         </tbody>
                     ))}
             </table>
-            <Toaster/>
+            <Toaster />
         </div>
     );
 };
