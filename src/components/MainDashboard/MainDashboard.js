@@ -106,7 +106,7 @@ const MainDashboard = () => {
                             </li>
                         </>}
                         <li>
-                            <Link to="">
+                            <Link to="/">
                                 <span className="icon">
                                     <FontAwesomeIcon className="faIcon" icon={faSignOutAlt}></FontAwesomeIcon>
                                 </span>

@@ -7,7 +7,7 @@ import useFirebase from '../../hooks/useFirebase';
 import "./ProfilePopper.css";
 
 const ProfilePopper = () => {
-    const { user, logOut } = useFirebase();
+    const { user, logOut, admin } = useFirebase();
     const { email, displayName: name, photoURL: img } = user;
     const signOut = () => {
         logOut()
@@ -20,11 +20,11 @@ const ProfilePopper = () => {
             overlay={
                 <Popover id="popover-basic">
                     <Popover.Body>
-                    <div className="d-flex justify-content-center mt-1">
-                        <Image style={{ maxWidth: "60px" }} src={img || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'} roundedCircle />
-                    </div>  
+                        <div className="d-flex justify-content-center mt-1">
+                            <Image style={{ maxWidth: "60px" }} src={img || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'} roundedCircle />
+                        </div>
                         <strong className="text-center d-block">{name}</strong>
-                       <div className="d-flex justify-content-center mt-1">
+                        <div className="d-flex justify-content-center mt-1">
                             <Button onClick={signOut}
                                 variant="outline-danger"
                                 className="py-0 px-1"
@@ -32,18 +32,31 @@ const ProfilePopper = () => {
                             </Button>
                         </div>
                         <hr />
-                        <div className="dropdown-item">
-                            <Link to="dashboard">My Booking</Link>
-                        </div>
-                        <div className="dropdown-item">
-                            <Link to={`/dashboard/sendReview`}>Add Review</Link>
-                        </div>
-                        <div className="dropdown-item">
-                            <Link to={`/dashboard/makeAdmin`}>Make Admin</Link>
-                        </div>
-                        <div className="dropdown-item">
-                            <Link to={`/dashboard/manageAllBooking`}>Manage All Booking</Link>
-                        </div>
+                        {
+                            !admin ?
+                                <>
+                                    <div className="dropdown-item">
+                                        <Link to={`dashboard/myBookings`}>My Booking</Link>
+                                    </div>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/sendReview`}>Add Review</Link>
+                                    </div>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/payment`}>Payment</Link>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/makeAdmin`}>Make Admin</Link>
+                                    </div>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/manageAllBooking`}>Manage All Booking</Link>
+                                    </div>
+                                </>
+                        }
+
+
                     </Popover.Body>
                 </Popover>
             }>
