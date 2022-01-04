@@ -26,52 +26,57 @@ const Signup = () => {
         e.preventDefault();
     }
     return (
-        <Container className="mt-5"><h1 className="fw-bold mb-4"><FontAwesomeIcon className="text-info" icon={faTint} /> Water<span className="text-info">Park</span></h1>
-            <Form onSubmit={handleRegisterSubmit}>
-                {!isLoading && <div className="d-flex flex-column align-items-center">
-                    <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
-                        <Form.Control
-                            id="floatingInputCustom2"
-                            type="text"
-                            name="name"
-                            placeholder="name"
-                        />
-                        <label htmlFor="floatingInputCustom2">Name</label>
-                    </Form.Floating>
-                    <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
-                        <Form.Control
-                            id="floatingInputCustom3"
-                            type="email"
-                            name="email"
-                            placeholder="name@example.com"
-                        />
-                        <label htmlFor="floatingInputCustom3">Email address</label>
-                    </Form.Floating>
-                    <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
-                        <Form.Control
-                            id="floatingPasswordCustom2"
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                        />
-                        <label htmlFor="floatingPasswordCustom2">Password</label>
-                    </Form.Floating>
-                    <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
-                        <Form.Control
-                            id="floatingPasswordCustom3"
-                            type="password"
-                            name="confirmPassword"
-                            placeholder="Confirm Password"
-                        />
-                        <label htmlFor="floatingPasswordCustom3">Confirm Password</label>
-                    </Form.Floating>
-                    <Button variant="info" className="col-12 col-md-4 py-3 text-white fw-bold" type="submit">Sign up</Button>
-                    {authError && <Alert variant="danger">{authError}</Alert>}
-                    <p className="mt-3">Already have an account??
-                        <Link to="/login" className="text-decoration-none text-primary fw-bold"> Login</Link></p>
-                </div>}
-            </Form>
-        </Container>
+            <Container className="pt-5">
+                <h1 className="fw-bold mb-4"><FontAwesomeIcon className="text-info" icon={faTint} /> Water<span className="text-info">Park</span></h1>
+                <Form onSubmit={handleRegisterSubmit}>
+                    {!isLoading && <div className="d-flex flex-column align-items-center">
+                        <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
+                            <Form.Control
+                                id="floatingInputCustom2"
+                                type="text"
+                                name="name"
+                                placeholder="name"
+                                className="border border-info"
+                            />
+                            <label htmlFor="floatingInputCustom2">Name</label>
+                        </Form.Floating>
+                        <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
+                            <Form.Control
+                                id="floatingInputCustom3"
+                                type="email"
+                                name="email"
+                                placeholder="name@example.com"
+                                className="border border-info"
+                            />
+                            <label htmlFor="floatingInputCustom3">Email address</label>
+                        </Form.Floating>
+                        <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
+                            <Form.Control
+                                id="floatingPasswordCustom2"
+                                type="password"
+                                name="password"
+                                placeholder="Password"
+                                className="border border-info"
+                            />
+                            <label htmlFor="floatingPasswordCustom2">Password</label>
+                        </Form.Floating>
+                        <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
+                            <Form.Control
+                                id="floatingPasswordCustom3"
+                                type="password"
+                                name="confirmPassword"
+                                placeholder="Confirm Password"
+                                className="border border-info"
+                            />
+                            <label htmlFor="floatingPasswordCustom3">Confirm Password</label>
+                        </Form.Floating>
+                        <Button variant="info" className="col-12 col-md-4 py-3 text-white fw-bold" type="submit">Sign up</Button>
+                        {authError && <Alert variant="danger">{authError}</Alert>}
+                        <p className="mt-3">Already have an account??
+                            <Link to="/login" className="text-decoration-none text-primary fw-bold"> Login</Link></p>
+                    </div>}
+                </Form>
+            </Container>
     );
 };
 

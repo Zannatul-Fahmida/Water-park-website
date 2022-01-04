@@ -3,3 +3,7 @@
     background-color: transparent;
     border: none;
 }
+.blog-title {
+    font-size: 20px;
+    font-family: pacifico,cursive!important;
+}

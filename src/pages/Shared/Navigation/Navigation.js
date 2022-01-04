@@ -5,7 +5,7 @@ import ProfilePopper from '../../../components/ProfilePopper/ProfilePopper';
 import useFirebase from '../../../hooks/useFirebase';
 
 const Navigation = () => {
-  const {user, logOut} = useFirebase();
+  const { user, logOut } = useFirebase();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -38,12 +38,12 @@ const Navigation = () => {
             <div className="d-flex align-items-center">
               {
                 user.email ?
-                <>
-                <div className="user-img">
-                                <ProfilePopper/>
-                            </div>
-                </>
-                :
+                  <>
+                    <div className="user-img">
+                      <ProfilePopper />
+                    </div>
+                  </>
+                  :
                   <>
                     <Link to="/login">
                       <button className='btn px-3 fs-6'>Log in</button>
