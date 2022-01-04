@@ -1,10 +1,11 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
+import ProfilePopper from '../../../components/ProfilePopper/ProfilePopper';
 import useFirebase from '../../../hooks/useFirebase';
 
 const Navigation = () => {
-  const {user, logOut} = useFirebase();
+  const { user, logOut } = useFirebase();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -37,14 +38,12 @@ const Navigation = () => {
             <div className="d-flex align-items-center">
               {
                 user.email ?
-                <>
-                <p className="mb-0 fw-bold">{user.displayName}</p>
-                <Link to="/">
-                <Button className="ms-3">Dashboard</Button>
-                </Link>
-                <Button className="ms-3 text-white fw-bold" variant="info" onClick={logOut}>Log Out</Button>
-                </>
-                :
+                  <>
+                    <div className="user-img">
+                      <ProfilePopper />
+                    </div>
+                  </>
+                  :
                   <>
                     <Link to="/login">
                       <button className='btn px-3 fs-6'>Log in</button>
