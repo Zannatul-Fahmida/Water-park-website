@@ -36,13 +36,13 @@ const ProfilePopper = () => {
                             <Link to="dashboard">My Booking</Link>
                         </div>
                         <div className="dropdown-item">
-                            <Link to="order">Add Review</Link>
+                            <Link to={`/dashboard/sendReview`}>Add Review</Link>
                         </div>
                         <div className="dropdown-item">
-                            <Link to="order">Make Admin</Link>
+                            <Link to={`/dashboard/makeAdmin`}>Make Admin</Link>
                         </div>
                         <div className="dropdown-item">
-                            <Link to="order">Manage All Booking</Link>
+                            <Link to={`/dashboard/manageAllBooking`}>Manage All Booking</Link>
                         </div>
                     </Popover.Body>
                 </Popover>

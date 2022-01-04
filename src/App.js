@@ -18,6 +18,7 @@ import Login from './pages/Login/Login/Login';
 import Signup from './pages/Login/SignUp/Signup';
 import Navigation from './pages/Shared/Navigation/Navigation';
 import NavTop from './pages/Shared/NavTop/NavTop';
+import Payment from './components/UserDashboard/Payment/Payment';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route exact path={`/dashboard`} element={<MainDashboard />}>
           <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
           <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
+          <Route path={`/dashboard/payment`} element={<Payment />}> </Route>
           <Route path={`/dashboard/manageAllBooking`} element={<ManageAllBooking />}> </Route> 
           <Route path={`/dashboard/addProduct`} element={<AddProduct />}> </Route> 
           <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin /> }> </Route>

@@ -47,7 +47,7 @@ const MainDashboard = () => {
                         </li>
                         {!admin && <>
                             <li>
-                                <Link to={`dashboard/myBookings`}>
+                                <Link to={`/dashboard/myBookings`}>
                                     <span className="icon">
                                         <FontAwesomeIcon className="faIcon" icon={faPeopleArrows}></FontAwesomeIcon>
                                     </span>
@@ -63,7 +63,7 @@ const MainDashboard = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`dashboard/payment`}>
+                                <Link to={`/dashboard/payment`}>
                                     <span className="icon">
                                         <FontAwesomeIcon className="faIcon" icon={faHandsHelping}></FontAwesomeIcon>
                                     </span>
