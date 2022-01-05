@@ -16,7 +16,7 @@ const AddProduct = () => {
                         id: loading,
                       });
                     reset();
-                    return swal("Successfully Added!", "Your car has been successfully added.", "success");
+                    return swal("Successfully Added!", "Your Ride has been successfully added.", "success");
                 }
             })
     }
