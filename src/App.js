@@ -20,20 +20,21 @@ import NavTop from './pages/Shared/NavTop/NavTop';
 import Payment from './components/UserDashboard/Payment/Payment';
 import PackageBooking from './pages/PackageBooking/PackageBooking';
 import Footer from './pages/Shared/Footer/Footer';
+import AddBlog from './components/UserDashboard/AddBlog/AddBlog';
+import FullBlog from './pages/Home/FullBlog/FullBlog';
 
 function App() {
   return (
     <div className="App">
-      <NavTop></NavTop>
-      <Navigation></Navigation>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path={`/booking/:id`} element={<PackageBooking />} />
+        <Route path={`/blogs/:blogId`} element={<FullBlog />} />
         <Route exact path={`/dashboard`} element={<MainDashboard />}>
           <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
           <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
@@ -41,6 +42,7 @@ function App() {
           <Route path={`/dashboard/manageAllBooking`} element={<ManageAllBooking />}> </Route> 
           <Route path={`/dashboard/addProduct`} element={<AddProduct />}> </Route> 
           <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin /> }> </Route>
+          <Route path={`/dashboard/addBlog`} element={<AddBlog /> }> </Route>
           <Route path={`/dashboard/manageAllProduct`} element={ <ManageAllProduct />}> </Route>
         </Route>
       </Routes>

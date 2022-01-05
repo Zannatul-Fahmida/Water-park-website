@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Col, Form, Button, Row, Container } from 'react-bootstrap';
+import { Col, Form, Button, Row, Container, Image } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router';
 import './PackageBooking.css';
 import toast, { Toaster } from 'react-hot-toast';
 import useFirebase from '../../hooks/useFirebase';
+import NavTop from '../Shared/NavTop/NavTop';
+import Navigation from '../Shared/Navigation/Navigation';
+import Footer from '../Shared/Footer/Footer';
+import slider from '../../images/clipart2684187.png';
 
 const PackageBooking = () => {
     const { id } = useParams();
@@ -30,74 +34,86 @@ const PackageBooking = () => {
         axios.post('http://localhost:5000/booking', data)
             .then(res => {
                 if (res.data.insertedId) {
-                    toast.success('Booking Succesful')
+                    toast.success('Booking Successful')
                     reset();
                     history.push('/carsCollection')
                 }
             })
     }
     return (
-        <div className="car-booking py-5">
+        <div>
+            <NavTop />
+            <Navigation />
             <Container className="py-5">
-                <h2 className="text-center py-2">Booking Confirmation</h2>
-
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-main" style={{ borderRadius: "15px", maxWidth: '85rem' }}>
                         <Row>
                             <Col md={6} xs={12} className="pr-md-4">
-                                <input 
-                                className="our-form-input" 
-                                type="text" 
-                                {...register("packageName", { required: true })} 
-                                defaultValue={packageName} />
-                                <label>Name</label>
+                                <h2 className="text-center mb-4 booking-title">Booking <span className="text-info">Confirmation</span></h2>
                                 <input
                                     className="our-form-input"
                                     type="text"
-                                    defaultValue={user.displayName}
-                                    {...register("name", { required: true })}
-                                    placeholder="Your Name"
-                                />
-                                <label>Email</label>
-                                <input
-                                    type="email"
-                                    className="our-form-input"
-                                    defaultValue={user.email}
-                                    {...register("email", { required: true })}
-                                    placeholder="Your Email"
-                                />
-                                <label>Your Phone Number</label>
-                                <input
-                                    type="number"
-                                    className="our-form-input"
-                                    defaultValue=""
-                                    {...register("phone", { required: true })}
-                                    placeholder="Phone Number"
-                                />
-                                <label>Test Drive Date</label>
-                                <input
-                                    type="date"
-                                    date="{{date}}" timezone="[[timezone]]"
-                                    className="our-form-input"
-                                    defaultValue=""
-                                    {...register("bookingDate", { required: true })}
-                                    placeholder="Booking Date"
-                                />
-                                 <br />
+                                    {...register("packageName", { required: true })}
+                                    defaultValue={packageName} />
+                                <div className='text-start'>
+                                    <label className='fw-bold'>Name</label>
+                                    <input
+                                        className="our-form-input"
+                                        type="text"
+                                        defaultValue={user.displayName}
+                                        {...register("name", { required: true })}
+                                        placeholder="Your Name"
+                                    />
+                                </div>
+                                <div className='text-start'>
+                                    <label className='fw-bold'>Email</label>
+                                    <input
+                                        type="email"
+                                        className="our-form-input"
+                                        defaultValue={user.email}
+                                        {...register("email", { required: true })}
+                                        placeholder="Your Email"
+                                    />
+                                </div>
+                                <div className='text-start'>
+                                    <label className='fw-bold'>Your Phone Number</label>
+                                    <input
+                                        type="number"
+                                        className="our-form-input"
+                                        defaultValue=""
+                                        {...register("phone", { required: true })}
+                                        placeholder="Phone Number"
+                                    />
+                                </div>
+                                <div className='text-start'>
+                                    <label className='fw-bold'>Date</label>
+                                    <input
+                                        type="date"
+                                        date="{{date}}" timezone="[[timezone]]"
+                                        className="our-form-input"
+                                        defaultValue=""
+                                        {...register("bookingDate", { required: true })}
+                                        placeholder="Booking Date"
+                                    />
+                                </div>
+                                <br />
                                 {/* <Button type="submit">Send</Button> */}
+                                <div className="text-center mt-2">
+                                    <Button type="submit" className="btn-main" style={{ padding: ".68rem 2rem" }}>
+                                        Confirm Booking
+                                    </Button>
+                                </div>
+                            </Col>
+                            <Col></Col>
+                            <Col xs={12} md={5} className='mt-4'>
+                                <Image src={slider} alt="" fluid />
                             </Col>
                         </Row>
                     </div>
-
-                    <div className="text-center mt-4">
-                        <Button type="submit" className="btn-main" style={{ padding: ".68rem 2rem" }}>
-                            Confirm Booking
-                        </Button>
-                    </div>
                 </form>
-                <Toaster/>
-
+                <Toaster />
             </Container>
+            <Footer />
         </div>
     );
 };

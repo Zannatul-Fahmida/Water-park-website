@@ -1,12 +1,16 @@
-import { faArrowRight, faClock } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Card, Col, Container, Row } from 'react-bootstrap';
-import img1 from '../../../images/istockphoto-481689044-612x612.jpg';
+import React, { useEffect, useState } from 'react';
+import { Card, Container, Row } from 'react-bootstrap';
 import './Blogs.css';
 import Jump from 'react-reveal/Jump';
+import Blog from '../Blog/Blog';
 
 const Blogs = () => {
+    const [blogs, setBlogs] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/blogs')
+            .then(res => res.json())
+            .then(data => setBlogs(data))
+    }, []);
     return (
         <div className="my-5">
             <h6 className="text-info blog-title">Our blog</h6>
@@ -15,24 +19,13 @@ const Blogs = () => {
             <Container>
                 <Jump>
                     <Row xs={1} md={2} className="g-4">
-                        <Card>
-                            <Row>
-                                <Col md={6} className="px-0">
-                                    <Card.Img variant="top" className="h-100" src={img1} />
-                                </Col>
-                                <Col md={6}>
-                                    <Card.Body className="text-start">
-                                        <Card.Title>Why Children Dont Like Getting Out Of The Water</Card.Title>
-                                        <h6 className="text-secondary"><FontAwesomeIcon icon={faClock} /> August 10, 2021</h6>
-                                        <Card.Text className="text-secondary">
-                                            This is a longer card with supporting text below as a natural
-                                            lead-in to additional content.
-                                        </Card.Text>
-                                        <button className="read-more-btn text-info">READ MORE <FontAwesomeIcon icon={faArrowRight} /></button>
-                                    </Card.Body>
-                                </Col>
-                            </Row>
-                        </Card>
+                        {
+                            blogs.map(blog => <Blog
+                                key={blog._id}
+                                blog={blog}
+                            ></Blog>
+                            )
+                        }
                     </Row>
                 </Jump>
             </Container>

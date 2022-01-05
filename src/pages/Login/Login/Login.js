@@ -1,10 +1,13 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { faTint } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useFirebase from '../../../hooks/useFirebase';
+import Footer from '../../Shared/Footer/Footer';
+import logo from '../../../images/268400530_373968071167259_3189583390863392829_n.png';
+import NavTop from '../../Shared/NavTop/NavTop';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
@@ -27,11 +30,14 @@ const Login = () => {
         signInWithGoogle(location, navigate);
     }
     return (
-            <Container className="pt-5">
+        <>
+        <NavTop />
+        <Navigation />
+            <Container className="py-5">
                 <Form onSubmit={handleLoginSubmit}>
                     <div className="d-flex flex-column align-items-center">
                         <div className="text-center col-8 col-md-4">
-                            <h1 className="fw-bold mb-4"><FontAwesomeIcon className="text-info" icon={faTint} /> Water<span className="text-info">Park</span></h1>
+                            <h2 className="mb-4"><img style={{height: '100px'}} className='img-fluid' src={logo} alt="" />Water <span className="text-info">Kingdom</span></h2>
                         </div>
                         <Form.Floating onChange={handleOnChange} className="mb-3 col-12 col-md-4">
                             <Form.Control
@@ -62,6 +68,8 @@ const Login = () => {
                     </div>
                 </Form>
             </Container>
+            <Footer></Footer>
+        </>
     );
 };
 

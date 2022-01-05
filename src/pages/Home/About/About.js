@@ -3,10 +3,14 @@ import img from '../../../images/about.jpg'
 import img2 from '../../../images/about2.jpg'
 import Footer from '../../Shared/Footer/Footer';
 import Fade from 'react-reveal/Fade';
+import NavTop from '../../Shared/NavTop/NavTop';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const About = () => {
     return (
         <div>
+        <NavTop />
+        <Navigation />
             <div className="container">
                 <div className="about-content1">
                     <img className='img-fluid' src={img} alt="" />

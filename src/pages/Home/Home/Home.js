@@ -8,10 +8,14 @@ import Subscriber from '../Subscriber/Subscriber';
 import EventPackage from '../EventPackages/EventPackage/EventPackage';
 import Banner from '../Banner/Banner';
 import Footer from '../../Shared/Footer/Footer';
+import NavTop from '../../Shared/NavTop/NavTop';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Home = () => {
     return (
         <div>
+            <NavTop />
+            <Navigation />
             <Banner />
             <ImgGallery />
             <EventPackage />

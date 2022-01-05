@@ -1,10 +1,12 @@
-import { faTint } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Alert, Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import useFirebase from '../../../hooks/useFirebase';
+import Footer from '../../Shared/Footer/Footer';
+import logo from '../../../images/268400530_373968071167259_3189583390863392829_n.png';
+import NavTop from '../../Shared/NavTop/NavTop';
+import Navigation from '../../Shared/Navigation/Navigation';
 
 const Signup = () => {
     const [loginData, setLoginData] = useState({});
@@ -26,8 +28,11 @@ const Signup = () => {
         e.preventDefault();
     }
     return (
-            <Container className="pt-5">
-                <h1 className="fw-bold mb-4"><FontAwesomeIcon className="text-info" icon={faTint} /> Water<span className="text-info">Park</span></h1>
+        <>
+        <NavTop />
+        <Navigation />
+            <Container className="py-5">
+            <h2 className="mb-4"><img style={{height: '100px'}} className='img-fluid' src={logo} alt="" />Water <span className="text-info">Kingdom</span></h2>
                 <Form onSubmit={handleRegisterSubmit}>
                     {!isLoading && <div className="d-flex flex-column align-items-center">
                         <Form.Floating onBlur={handleOnBlur} className="mb-3 col-12 col-md-4">
@@ -77,6 +82,8 @@ const Signup = () => {
                     </div>}
                 </Form>
             </Container>
+            <Footer></Footer>
+        </>
     );
 };
 

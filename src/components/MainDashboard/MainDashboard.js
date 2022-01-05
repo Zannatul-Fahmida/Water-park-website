@@ -1,4 +1,4 @@
-import { faApple } from '@fortawesome/free-brands-svg-icons';
+import { faApple, faBlogger } from '@fortawesome/free-brands-svg-icons';
 import { faAmbulance, faCarCrash, faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
@@ -78,6 +78,14 @@ const MainDashboard = () => {
                                         <FontAwesomeIcon className="faIcon" icon={faAmbulance}></FontAwesomeIcon>
                                     </span>
                                     <span className="title">Add a Car</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={`/dashboard/addBlog`}>
+                                    <span className="icon">
+                                        <FontAwesomeIcon className="faIcon" icon={faBlogger}></FontAwesomeIcon>
+                                    </span>
+                                    <span className="title">Add Blog</span>
                                 </Link>
                             </li>
                             <li>
