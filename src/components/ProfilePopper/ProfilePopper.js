@@ -36,7 +36,7 @@ const ProfilePopper = () => {
                             !admin ?
                                 <>
                                     <div className="dropdown-item">
-                                        <Link to={`dashboard/myBookings`}>My Booking</Link>
+                                        <Link to={`/dashboard/myBookings`}>My Booking</Link>
                                     </div>
                                     <div className="dropdown-item">
                                         <Link to={`/dashboard/sendReview`}>Add Review</Link>
