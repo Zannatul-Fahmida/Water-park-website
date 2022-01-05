@@ -24,13 +24,11 @@ import Footer from './pages/Shared/Footer/Footer';
 function App() {
   return (
     <div className="App">
-      <NavTop></NavTop>
-      <Navigation></Navigation>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path={`/booking/:id`} element={<PackageBooking />} />

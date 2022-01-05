@@ -1,9 +1,11 @@
-.logo{
-    width: 100px;
-    height: 60px;
 
+
+.logo{
+    width: 300px;
+    height: 65px;
 }
-.top-contact span{
+
+.site-name, .top-contact span{
     color: #0dcaf0;
 }
 .social-menu li{
@@ -29,16 +31,20 @@
 .social-menu li:hover{
     transform: scale(1.1, 1.1);
 }
-
 .top-contact{
     display: flex;
-    justify-content: right;
     flex-direction: column;
-    margin-top: 15px;
-
+    text-align: right;
 }
+
 
 .top-contact span {
     font-size: 16px;
 }
 
+
+@media screen and (max-width: 900px) {
+    .top-contact{
+        text-align: center;
+    }
+}

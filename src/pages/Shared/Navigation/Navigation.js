@@ -3,6 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import ProfilePopper from '../../../components/ProfilePopper/ProfilePopper';
 import useFirebase from '../../../hooks/useFirebase';
 
+
 const Navigation = () => {
   const { user } = useFirebase();
   return (
