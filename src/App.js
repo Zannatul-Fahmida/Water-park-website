@@ -19,6 +19,7 @@ import PackageBooking from './pages/PackageBooking/PackageBooking';
 import Update from './components/UserDashboard/Update/Update';
 import Rides from './pages/Home/Rides/Rides/Rides';
 import Login from './pages/Login/Login/Login';
+import RideBooking from './components/RideBooking/RideBooking';
 
 
 
@@ -34,6 +35,7 @@ function App() {
       <Route path="about" element={<About />} />
       <Route path="contact" element={<Contact />} />
       <Route path={`/booking/:id`} element={<PackageBooking />} />
+      <Route path={`/ridebooking/:id`} element={<RideBooking />} />
       <Route exact path={`/dashboard`} element={<MainDashboard />}>
         <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
         <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>

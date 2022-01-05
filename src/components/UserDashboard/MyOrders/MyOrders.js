@@ -26,15 +26,15 @@ const MyOrders = () => {
     const handlePay = (order) => {
         const strAmount = order.amount;
         const amount = parseInt(strAmount)
-        console.log(typeof amount);
+        console.log(amount);
         const orderData = {
             "amount": amount * 100,
             "currency": "USD",
         }
-        axios.post('http://localhost:5000/orderPay', orderData)
+        axios.post('http://localhost:5000/createOrder', orderData)
             .then(res => {
                 const response = res;
-                const {data} = response;
+                const { data } = response;
                 const options = {
                     key: process.env.RAZOR_PAY_TEST_KEY,
                     name: "WaterPark",
@@ -61,7 +61,7 @@ const MyOrders = () => {
                 rzp1.open();
             })
     }
-    
+
     const handleDelete = (id) => {
         swal({
             title: "Are you sure?",

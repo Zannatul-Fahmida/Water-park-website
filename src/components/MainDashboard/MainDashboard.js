@@ -77,7 +77,7 @@ const MainDashboard = () => {
                                     <span className="icon">
                                         <FontAwesomeIcon className="faIcon" icon={faAmbulance}></FontAwesomeIcon>
                                     </span>
-                                    <span className="title">Add a Car</span>
+                                    <span className="title">Add a Ride</span>
                                 </Link>
                             </li>
                             <li>
@@ -101,7 +101,7 @@ const MainDashboard = () => {
                                     <span className="icon">
                                         <FontAwesomeIcon className="faIcon" icon={faCarCrash}></FontAwesomeIcon>
                                     </span>
-                                    <span className="title">Manage All Car</span>
+                                    <span className="title">Manage All Ride</span>
                                 </Link>
                             </li>
                         </>}

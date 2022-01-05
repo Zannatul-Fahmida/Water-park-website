@@ -24,9 +24,9 @@ const Update = () => {
                 if (data.modifiedCount > 0) {
                     toast.success('Updated Successfully')
                     setRide({})
+                    history('/dashboard/manageAllProduct')
                 }
             })
-        history.push('/dashboard/manageAllride')
     };
     console.log(ride);
 
@@ -61,7 +61,7 @@ const Update = () => {
                                         type="text"
                                         className="our-form-input"
                                         defaultValue={ride.code}
-                                        {...register("mileage", { required: true })}
+                                        {...register("code", { required: true })}
                                         placeholder="Ride Code"
                                     />
                                 </Col>
@@ -94,7 +94,7 @@ const Update = () => {
                                 style={{ height: '150px' }}
                                 className="our-form-input"
                                 defaultValue={ride.description}
-                                {...register("details")}
+                                {...register("description")}
                                 placeholder="Type Ride Details"
                             />
                             <br />
