@@ -30,6 +30,7 @@ const Banner = () => {
                             <h6>Welcome To WaterKingdom</h6>
                             <h1>THE GREATEST WATER AND AMUSEMENT PARK IN THE WORLD</h1>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris</p>
+                            
                             <span className='banner-video d-flex align-items-center' >
                                 <a className='animation-button' target="_blank" href="https://www.youtube.com/watch?v=KXT2w0dCsYc&ab_channel=AddieMaePlays"><i class="far fa-play-circle"></i> </a>
                                 <h5 className='ms-3'>Watch Intro</h5>

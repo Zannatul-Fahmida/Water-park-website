@@ -1,8 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import NavTop from '../../Shared/NavTop/NavTop';
+import Footer from '../../Shared/Footer/Footer';
 import './Contact.css'
 
 const Contact = () => {

@@ -9,7 +9,7 @@ const ManageAllBooking = () => {
     const [booking, setBooking] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('https://safe-crag-22535.herokuapp.com/booking')
+        fetch('http://localhost:5000/booking')
             .then(res => res.json())
             .then(data => {
                 setBooking(data)
@@ -28,7 +28,7 @@ const ManageAllBooking = () => {
         }).then(wantDelete => {
             if (wantDelete) {
                 const loadingId = toast.loading("Deleting...");
-                const url = `https://safe-crag-22535.herokuapp.com/deletedBooking/${id}`
+                const url = `http://localhost:5000/booking/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
@@ -37,7 +37,7 @@ const ManageAllBooking = () => {
                         console.log(data);
                         toast.success('Deleted', {
                             id: loadingId,
-                          });
+                        });
                         if (data.deletedCount > 0) {
                             const remaining = booking.filter(booking => booking?._id !== id)
                             setBooking(remaining);
@@ -64,7 +64,7 @@ const ManageAllBooking = () => {
 
         const modifiedStatus = { id, status }
 
-        axios.patch(`https://safe-crag-22535.herokuapp.com/booking/${id}`, modifiedStatus)
+        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => alert(error.message))
     }
@@ -79,9 +79,10 @@ const ManageAllBooking = () => {
                 <thead>
                     <tr>
                         <td>SL NO</td>
-                        <td>Car Name</td>
+                        <td>Customer Name</td>
+                        <td>Package Name</td>
                         <td>Email</td>
-                        <td>Test Drive Date</td>
+                        <td>Booking Date</td>
                         <td>Status</td>
                         <td>Cancel Order</td>
                     </tr>
@@ -92,11 +93,12 @@ const ManageAllBooking = () => {
                             <tr>
                                 <td>{index + 1}</td>
                                 <td>{order?.name?.toUpperCase()}</td>
-                                <td>{order.email}</td>
-                                <td>{order.orderTime}</td>
+                                <td>{order?.packageName}</td>
+                                <td>{order?.email?.slice(0,8)}...</td>
+                                <td>{order?.orderTime}</td>
                                 <td>
                                     <select
-                                        className={order.status === "pending" ? "btn btn-danger" : order.status === "Done" ? "btn btn-success" : "btn btn-info"}
+                                        className={order.status === "Pending" ? "btn btn-danger" : order.status === "Done" ? "btn btn-success" : "btn btn-info"}
                                         defaultValue={order.status}
                                         onChange={e => handleStatusChange(order._id, e.target.value)}>
                                         <option className="bg-white text-muted">Pending</option>
@@ -105,7 +107,9 @@ const ManageAllBooking = () => {
                                     </select>
                                     <Toaster />
                                 </td>
-                                <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger m-1">CANCEL</Button>
+                                <td>
+                                    <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger m-1">CANCEL</Button>
+                                </td>
                             </tr>
                         </tbody>
                     ))}

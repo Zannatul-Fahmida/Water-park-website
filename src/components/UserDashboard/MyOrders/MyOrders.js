@@ -6,6 +6,7 @@ import swal from 'sweetalert';
 import useFirebase from '../../../hooks/useFirebase';
 import "./MyOrder.css";
 import Axios from "axios";
+import axios from 'axios';
 
 const MyOrders = () => {
     const { user } = useFirebase();
@@ -21,43 +22,46 @@ const MyOrders = () => {
             })
 
     }, [user.email]);
-    const handlePay = async (id) => {
-        const orderUrl = `http://localhost:5000/order`;
-        const response = await Axios.get(orderUrl);
-        const { data } = response;
-        const options = {
-            key: process.env.RAZOR_PAY_TEST_KEY,
-            name: "WaterPark",
-            description: "Payment",
-            order_id: data.id,
-            handler: async (response) => {
-                try {
-                    const paymentId = response.razorpay_payment_id;
-                    const url = `http://localhost:5000/capture/${paymentId}`;
-                    const captureResponse = await Axios.post(url, {});
-                    console.log(captureResponse.data);
-                    window.location.reload();
-                } catch (err) {
-                    console.log(err);
-                }
-            },
-            theme: {
-                color: "#00ffee",
-            },
-        };
-        const rzp1 = new window.Razorpay(options);
-        rzp1.open();
-        fetch(`http://localhost:5000/booking/${id}`, {
-            method: 'DELETE'
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    const remaining = myBookings.filter(order => order._id !== id);
-                    setMyBookings(remaining);
-                }
+    // RAZORPAY CREATED BY CHANDAN
+    const handlePay = (order) => {
+        const strAmount = order.amount;
+        const amount = parseInt(strAmount)
+        console.log(typeof amount);
+        const orderData = {
+            "amount": amount * 100,
+            "currency": "USD",
+        }
+        axios.post('http://localhost:5000/orderPay', orderData)
+            .then(res => {
+                const response = res;
+                const {data} = response;
+                const options = {
+                    key: process.env.RAZOR_PAY_TEST_KEY,
+                    name: "WaterPark",
+                    amount: data.amount,
+                    description: "Payment",
+                    order_id: data.id,
+                    handler: async (response) => {
+                        try {
+                            const paymentId = response.razorpay_payment_id;
+                            const url = `http://localhost:5000/capture/${paymentId}`;
+                            const captureResponse = await Axios.post(url, {});
+                            console.log(captureResponse.data);
+                            window.location.reload();
+                        } catch (err) {
+                            console.log(err);
+                        }
+                    },
+                    theme: {
+                        color: "#00ffee",
+                    },
+                };
+                console.log(options);
+                const rzp1 = new window.Razorpay(options);
+                rzp1.open();
             })
-    };
+    }
+    
     const handleDelete = (id) => {
         swal({
             title: "Are you sure?",
@@ -118,7 +122,7 @@ const MyOrders = () => {
                                 <td>{order.bookingDate}</td>
                                 <td>
                                     <span className={order.status === "Pending" ? "status pending" : order.status === "On going" ? "status inprogress" : order.status === "Done" ? "status delivered" : null}>{order.status}</span>
-                                    <Button onClick={() => handlePay(order._id)} variant="outline-success" className='white-space-off'>Pay Now</Button>
+                                    <Button onClick={() => handlePay(order)} variant="outline-success" className='white-space-off'>Pay Now</Button>
                                 </td>
                                 <td>
                                     <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger m-1" className='white-space-off'>Cancel</Button>
