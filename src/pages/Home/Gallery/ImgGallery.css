@@ -1,14 +1,13 @@
-.img-gallery .title h4 {
+.img-gallery .header-text h4 {
     font-size: 18px;
-    font-family: 'IBM Plex Serif', serif;
     font-weight: 600;
 }
-.img-gallery .title h2 {
-    font-size: 29px;
+.img-gallery .header-text h2 {
+    font-size: 35px;
     font-family: 'IBM Plex Serif', serif;
     font-weight: 700;
 }
-.img-gallery .title p {
+.img-gallery .header-text p {
     width: 500px;
     margin: auto;
     margin-bottom: 15px;

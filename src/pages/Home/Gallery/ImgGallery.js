@@ -2,6 +2,7 @@ import React from 'react';
 import Gallery from 'react-grid-gallery';
 import { Container } from 'react-bootstrap';
 import "./ImgGallery.css";
+import { Fade } from 'react-reveal';
 
 const ImgGallery = () => {
     const IMAGES =
@@ -99,10 +100,14 @@ const ImgGallery = () => {
     return (
         <div className="img-gallery">
             <Container className="py-5">
-                <div className="title py-3">
-                    <h4>OUR GALLERY</h4>
+                <div className="header-text py-3">
+                    <Fade left duration={2000} distance="40px">
+                        <h6>Our Gallery</h6>
+                    </Fade>
+                    <Fade right duration={2000} distance="40px">
                     <h2>CAPTURED MOMENTS IN AQUATICA</h2>
-                    <p>This is a very popular and famous Water Theme Park & Resorts.This is the major entertrainment place to visit, relax and enjoy a lot.</p>
+                    </Fade>
+                    <p className='text-secondary'>This is a very popular and famous Water Theme Park & Resorts.This is the major entertrainment place to visit, relax and enjoy a lot.</p>
                 </div>
                 <div className='py-3' style={{
                     display: "block",
@@ -110,7 +115,9 @@ const ImgGallery = () => {
                     margin: "auto",
                     overflow: "auto"
                 }}>
-                    <Gallery images={IMAGES} enableImageSelection={false} onSelectImage={false} tileViewportStyle={myTileViewportStyleFn} />
+                    <Fade bottom duration={1000} distance="40px">
+                    <Gallery images={IMAGES} enableImageSelection={false} tileViewportStyle={myTileViewportStyleFn} />
+                    </Fade>
                 </div>
 
             </Container>
