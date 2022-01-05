@@ -107,7 +107,7 @@ const ManageAllProduct = () => {
                                 <td>{index + 1}</td>
                                 <td style={{ width: '180px' }}><img src={pd.img} style={{ width: '130px', height: '100px', borderRadius: '5px' }} alt="" /> </td>
                                 <td>{pd.name?.toUpperCase()}</td>
-                                <td>{pd.price}</td>
+                                <td>${pd.price}</td>
                                 <td><Button onClick={() => handleUpdate(pd._id)} variant="warning bg-warning m-1">Update</Button></td>
                                 <td><Button onClick={() => handleDelete(pd._id)} variant="danger bg-danger text-light m-1">Delete</Button></td>
                             </tr>
