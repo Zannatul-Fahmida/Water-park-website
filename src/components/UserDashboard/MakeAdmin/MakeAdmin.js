@@ -8,6 +8,7 @@ const MakeAdmin = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => { 
         // console.log(data);
+        const loadingId = toast.loading("Please Wait...");
         fetch('http://localhost:5000/users/admin',{
             method: 'PUT',
             headers: {
@@ -19,10 +20,14 @@ const MakeAdmin = () => {
         .then(data => {
             if(data.modifiedCount){
                 console.log(data);
-                toast.success('Made admin')
+                toast.success('Made Admin Successful!', {
+                    id: loadingId,
+                });
             }
             else {
-                toast.error('Please Enter Valid Email')
+                toast.error('Please Enter Valid Email', {
+                    id: loadingId,
+                });
             }
         })
     }

@@ -34,7 +34,6 @@ const ManageAllBooking = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
                         toast.success('Deleted', {
                             id: loadingId,
                         });
@@ -81,6 +80,7 @@ const ManageAllBooking = () => {
                         <td>SL NO</td>
                         <td>Customer Name</td>
                         <td>Package Name</td>
+                        <td>Price</td>
                         <td>Email</td>
                         <td>Booking Date</td>
                         <td>Status</td>
@@ -94,11 +94,12 @@ const ManageAllBooking = () => {
                                 <td>{index + 1}</td>
                                 <td>{order?.name?.toUpperCase()}</td>
                                 <td>{order?.packageName}</td>
+                                <td>${order?.amount}</td>
                                 <td>{order?.email?.slice(0,8)}...</td>
                                 <td>{order?.orderTime}</td>
                                 <td>
                                     <select
-                                        className={order.status === "Pending" ? "btn btn-danger" : order.status === "Done" ? "btn btn-success" : "btn btn-info"}
+                                        className={order.status === "Pending" ? "btn btn-danger" : order.status === "Done" ? "btn btn-success" : order.status === "On going" && "btn btn-info"}
                                         defaultValue={order.status}
                                         onChange={e => handleStatusChange(order._id, e.target.value)}>
                                         <option className="bg-white text-muted">Pending</option>
