@@ -18,6 +18,7 @@ import PackageBooking from './pages/PackageBooking/PackageBooking';
 import Update from './components/UserDashboard/Update/Update';
 import AddBlog from './components/UserDashboard/AddBlog/AddBlog';
 import FullBlog from './pages/Home/FullBlog/FullBlog';
+import Membership from './pages/Home/Membership/Membership';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/membership" element={<Membership />} />
         <Route path={`/booking/:id`} element={<PackageBooking />} />
         <Route path={`/blogs/:blogId`} element={<FullBlog />} />
         <Route exact path={`/dashboard`} element={<MainDashboard />}>
