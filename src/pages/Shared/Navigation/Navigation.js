@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
+
 const Navigation = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -37,6 +38,7 @@ const Navigation = () => {
     <div className="d-flex ">
         <button className='btn  px-3 fs-6'>Sign in</button>
         <button className='btn  px-3 fs-6'>Sign up</button>
+
     </div>
         
       </div>

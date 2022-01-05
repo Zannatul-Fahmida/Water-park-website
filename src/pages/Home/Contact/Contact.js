@@ -1,5 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import Navigation from '../../Shared/Navigation/Navigation';
+import NavTop from '../../Shared/NavTop/NavTop';
+import Footer from '../Footer/Footer';
 import './Contact.css'
 
 const Contact = () => {
@@ -15,6 +18,8 @@ const Contact = () => {
         };
     return (
         <div>
+            <NavTop/>
+            <Navigation/>
             <div className="cotact-banner">
                 <div className="contact-overlay">
                 <h2 className='text-white'>Please Contact With Us</h2>
@@ -112,7 +117,7 @@ const Contact = () => {
                 </div>
             </div>
             </div>
-
+            <Footer/>
         </div>
     );
 };

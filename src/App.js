@@ -11,15 +11,12 @@ import NavTop from './pages/Shared/NavTop/NavTop';
 function App() {
   return (
     <div className="App">
-
-      <NavTop></NavTop>
-      <Navigation></Navigation>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="home" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }
