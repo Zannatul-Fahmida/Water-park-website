@@ -1,14 +1,14 @@
-.logo{
-    width: 100px;
-    height: 60px;
 
+
+.logo{
+    width: 300px;
+    height: 65px;
 }
+
 .site-name, .top-contact span{
     color: #0dcaf0;
-
 }
 .social-menu li{
-
     font-size: 25px;
     width: 50px;
     height: 50px;
@@ -19,26 +19,32 @@
     
 }
 .social-menu li i{
-    background: rgb(96, 178, 245);
+    background: #3585fc;
     padding: 10px;
     color: #fff;
-
+    border-radius: 5px;
+    transition: 1s;
 }
-.social-menu li :hover{
-    color: #000;
+.social-menu li:hover i{
+    transform: rotate(360deg);
+}
+.social-menu li:hover{
     transform: scale(1.1, 1.1);
-
 }
-
 .top-contact{
     display: flex;
-    justify-content: right;
     flex-direction: column;
-    margin-top: 15px;
-
+    text-align: right;
 }
+
 
 .top-contact span {
     font-size: 16px;
 }
 
+
+@media screen and (max-width: 900px) {
+    .top-contact{
+        text-align: center;
+    }
+}

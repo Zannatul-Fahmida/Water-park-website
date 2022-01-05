@@ -1,11 +1,11 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import { Link, NavLink } from 'react-router-dom';
 import ProfilePopper from '../../../components/ProfilePopper/ProfilePopper';
 import useFirebase from '../../../hooks/useFirebase';
 
+
 const Navigation = () => {
-  const { user, logOut } = useFirebase();
+  const { user } = useFirebase();
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">

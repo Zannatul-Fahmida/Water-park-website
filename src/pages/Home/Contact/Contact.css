@@ -1,8 +1,7 @@
 .cotact-banner{
     background: url('../../../images/contact.jpg');
     background-size: cover;
-	background-position: center;
-    
+	background-position: center; 
 }
 
 .contact-overlay{
@@ -13,20 +12,18 @@
     font-size: 50px;
     font-weight: 700;
 }
-
-.contact-content{
-    background-color: #cdf2f8;
-}
-
-.contac-box{
-    background: #97e7f5;
+.contact-box{
+    background: rgba(47, 228, 219, 0.74);
     padding: 5px;
 }
-.contac-box span{
+.contact-box span{
     font-size: 20px;
 }
-
 .contact-form{
-    background: rgba(255, 255, 255, 0.856);
+    background: rgba(47, 228, 219, 0.74);
     padding: 20px;
+}
+.touch-title{
+    font-size: 20px;
+    font-family: pacifico,cursive!important;
 }

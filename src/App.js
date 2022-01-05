@@ -12,7 +12,6 @@ import ManageAllProduct from './components/UserDashboard/ManageAllProduct/Manage
 import MyOrders from './components/UserDashboard/MyOrders/MyOrders';
 import About from './pages/Home/About/About';
 import Contact from './pages/Home/Contact/Contact';
-import Footer from './pages/Home/Footer/Footer';
 import Home from './pages/Home/Home/Home';
 import Login from './pages/Login/Login/Login';
 import Signup from './pages/Login/SignUp/Signup';
@@ -21,17 +20,16 @@ import NavTop from './pages/Shared/NavTop/NavTop';
 import Payment from './components/UserDashboard/Payment/Payment';
 import PackageBooking from './pages/PackageBooking/PackageBooking';
 import Update from './components/UserDashboard/Update/Update';
+import Footer from './pages/Shared/Footer/Footer';
 
 function App() {
   return (
     <div className="App">
-      <NavTop></NavTop>
-      <Navigation></Navigation>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
         <Route path="about" element={<About />} />
         <Route path="contact" element={<Contact />} />
         <Route path={`/booking/:id`} element={<PackageBooking />} />
@@ -46,7 +44,6 @@ function App() {
           <Route path={`/dashboard/manageAllProduct/update/:id`} element={ <Update />}> </Route>
         </Route>
       </Routes>
-      <Footer></Footer>
     </div>
   );
 }

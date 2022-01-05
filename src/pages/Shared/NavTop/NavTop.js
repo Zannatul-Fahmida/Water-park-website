@@ -1,19 +1,16 @@
 import React from 'react';
 import './NavTop.css'
-import logo from '../../../images/logo00.jpg'
+import logo from '../../../images/logo99.png'
 
 const NavTop = () => {
     return (
-        <div className='text-center text-md-start'>
+        <div className='text-center '>
             <div className="container">
                 <div className="row d-flex align-items-center">
-                    <div className="col-lg-4">
-                        <a className="navbar-brand d-inline-block" href="/">
-                        <div className="logo">
-                                <div className='d-flex align-items-center'>
-                                <img className='img-fluid rounded-circle' src={logo} alt="" />
-                                <h3 className='ms-2 site-name'> Water Kingdom</h3>
-                                </div>
+                    <div className="col-lg-4 ">
+                    <a className="navbar-brand" href="/">
+                            <div className="logo">
+                                <img className='img-fluid' src={logo} alt="" />
                             </div>
                         </a>
                     </div>
@@ -25,8 +22,8 @@ const NavTop = () => {
                         <li><i className="fab fa-linkedin"></i></li>
                         </div>
                     </div>
-                    <div className="col-lg-4">
-                        <div className='top-contact text-end fw-bolder'>
+                    <div className="col-lg-4 mt-2">
+                        <div className='top-contact fw-bolder'>
                             <span>waterpark@gmail.com <i className="fas fa-envelope"></i></span>
                             <span>01756100000 <i className="fas fa-phone-volume"></i></span>
                         </div>
