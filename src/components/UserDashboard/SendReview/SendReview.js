@@ -12,7 +12,7 @@ const SendReview = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        axios.post('https://safe-crag-22535.herokuapp.com/review', data)
+        axios.post('http://localhost:5000/reviews', data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Thank for Your Feedback!')
