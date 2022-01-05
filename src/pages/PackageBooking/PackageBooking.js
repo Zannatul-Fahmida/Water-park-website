@@ -13,7 +13,7 @@ const PackageBooking = () => {
     const history = useNavigate();
     const { email } = user;
     const [specificDetail, setSpecificDetail] = useState({});
-    const { packageName } = specificDetail;
+    const { packageName, price } = specificDetail;
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
@@ -22,9 +22,11 @@ const PackageBooking = () => {
             .then(res => res.json())
             .then(data => setSpecificDetail(data))
     }, [])
+    // const amount = specificDetail.price;
 
     const onSubmit = data => {
         data.packageId = id;
+        data.amount = price;
         data.status = "Pending";
         data.orderTime = new Date().toLocaleDateString('en-GB');
         axios.post('http://localhost:5000/booking', data)
