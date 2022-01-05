@@ -13,39 +13,41 @@ import MyOrders from './components/UserDashboard/MyOrders/MyOrders';
 import About from './pages/Home/About/About';
 import Contact from './pages/Home/Contact/Contact';
 import Home from './pages/Home/Home/Home';
-import Login from './pages/Login/Login/Login';
 import Signup from './pages/Login/SignUp/Signup';
-import Navigation from './pages/Shared/Navigation/Navigation';
-import NavTop from './pages/Shared/NavTop/NavTop';
 import Payment from './components/UserDashboard/Payment/Payment';
 import PackageBooking from './pages/PackageBooking/PackageBooking';
 import Update from './components/UserDashboard/Update/Update';
-import Footer from './pages/Shared/Footer/Footer';
+import Rides from './pages/Home/Rides/Rides/Rides';
+import Login from './pages/Login/Login/Login';
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <Routes>
+  return(
+  <div className="App">
+    <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path={`/booking/:id`} element={<PackageBooking />} />
-        <Route exact path={`/dashboard`} element={<MainDashboard />}>
-          <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
-          <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
-          <Route path={`/dashboard/payment`} element={<Payment />}> </Route>
-          <Route path={`/dashboard/manageAllBooking`} element={<ManageAllBooking />}> </Route> 
-          <Route path={`/dashboard/addProduct`} element={<AddProduct />}> </Route> 
-          <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin /> }> </Route>
-          <Route path={`/dashboard/manageAllProduct`} element={ <ManageAllProduct />}> </Route>
-          <Route path={`/dashboard/manageAllProduct/update/:id`} element={ <Update />}> </Route>
-        </Route>
-      </Routes>
-    </div>
-  );
+      <Route path="about" element={<About />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path={`/booking/:id`} element={<PackageBooking />} />
+      <Route exact path={`/dashboard`} element={<MainDashboard />}>
+        <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
+        <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
+        <Route path={`/dashboard/payment`} element={<Payment />}> </Route>
+        <Route path={`/dashboard/manageAllBooking`} element={<ManageAllBooking />}> </Route>
+        <Route path={`/dashboard/addProduct`} element={<AddProduct />}> </Route>
+        <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin />}> </Route>
+        <Route path={`/dashboard/manageAllProduct`} element={<ManageAllProduct />}> </Route>
+        <Route path={`/dashboard/manageAllProduct/update/:id`} element={<Update />}> </Route>
+      </Route>
+      <Route path="rides" element={<Rides />} />
+    </Routes>
+  </div>
+  )
 }
 
 export default App;
