@@ -12,7 +12,6 @@ const MyOrders = () => {
     const { user } = useFirebase();
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
-
     useEffect(() => {
         fetch(`http://localhost:5000/booking/${user.email}`)
             .then(res => res.json())
@@ -22,6 +21,23 @@ const MyOrders = () => {
             })
 
     }, [user.email]);
+    // HANDLE STATUS CHANGE
+    const handleStatusChange = (id, status) => {
+        let modifiedBooking = [];
+        myBookings.forEach(order => {
+            if (order._id === id) {
+                order.status = status;
+            }
+            modifiedBooking.push(order)
+        })
+        setMyBookings(modifiedBooking)
+
+        const modifiedStatus = { id, status }
+
+        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
+            .then(res => res.data && toast.success(`Set to ${status}`))
+            .catch(error => alert(error.message))
+    }
     // RAZORPAY CREATED BY CHANDAN
     const handlePay = (order) => {
         const strAmount = order.amount;
@@ -30,13 +46,15 @@ const MyOrders = () => {
         const orderData = {
             "amount": amount * 100,
             "currency": "USD",
+            receipt: "order_rcptid_11"
         }
         axios.post('http://localhost:5000/createOrder', orderData)
             .then(res => {
                 const response = res;
                 const { data } = response;
+                console.log("after orderCreate", response);
                 const options = {
-                    key: process.env.RAZOR_PAY_TEST_KEY,
+                    key: "rzp_test_zW5cNk7htIuKxJ",
                     name: "WaterPark",
                     amount: data.amount,
                     description: "Payment",
@@ -44,10 +62,17 @@ const MyOrders = () => {
                     handler: async (response) => {
                         try {
                             const paymentId = response.razorpay_payment_id;
-                            const url = `http://localhost:5000/capture/${paymentId}`;
-                            const captureResponse = await Axios.post(url, {});
-                            console.log(captureResponse.data);
-                            window.location.reload();
+                            const url = `http://localhost:5000/verifyOrder`;
+                            const captureResponse = await axios.post(url, response);
+                            if (captureResponse.data.success) {
+                                handleStatusChange(order._id, "On going")
+                            }
+
+                            const invoice = { ...data, ...response, ...captureResponse };
+                            console.log("invoice find", invoice);
+                            const captureInvoice = await axios.post("http://localhost:5000/invoices", invoice);
+                            console.log('captureinvoice', captureInvoice);
+                            // window.location.reload(); 
                         } catch (err) {
                             console.log(err);
                         }
@@ -108,7 +133,7 @@ const MyOrders = () => {
                         <td>Package Name</td>
                         <td>Email</td>
                         <td>Booking Date</td>
-                        <td>Status</td>
+                        <td>Payment Status</td>
                         <td>Cancel Order</td>
                     </tr>
                 </thead>
@@ -122,7 +147,10 @@ const MyOrders = () => {
                                 <td>{order.bookingDate}</td>
                                 <td>
                                     <span className={order.status === "Pending" ? "status pending" : order.status === "On going" ? "status inprogress" : order.status === "Done" ? "status delivered" : null}>{order.status}</span>
-                                    <Button onClick={() => handlePay(order)} variant="outline-success" className='white-space-off'>Pay Now</Button>
+                                    {
+                                        order.status === "Pending" &&
+                                        <Button onClick={() => handlePay(order)} variant="outline-success" className='white-space-off'>Pay Now</Button>
+                                    }
                                 </td>
                                 <td>
                                     <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger m-1" className='white-space-off'>Cancel</Button>

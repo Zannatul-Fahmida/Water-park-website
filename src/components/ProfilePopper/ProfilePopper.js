@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Nav, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
 // import useAuth from '../hooks/useAuth';
 import "./ProfilePopper.css";
@@ -9,9 +9,11 @@ import "./ProfilePopper.css";
 const ProfilePopper = () => {
     const { user, logOut, admin } = useFirebase();
     const { email, displayName: name, photoURL: img } = user;
+    const navigate = useNavigate();
     const signOut = () => {
         logOut()
         toast.error('Logged Out')
+        navigate("/")
     }
     return (
         <OverlayTrigger
