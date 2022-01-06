@@ -63,7 +63,7 @@ const Contact = () => {
                             </div>
                         </div>
                         <div className='d-flex align-items-center mt-3'>
-                            <h4 className='mt-2'>Official Social Media: </h4>
+                                <h4 className='mt-2'>Official Social Media: </h4>
                             <div className="social-menu d-flex list-unstyled justify-content-center align-items-center">
                                 <li><i className="fab fa-facebook-square"></i></li>
                                 <li><i className="fab fa-twitter-square"></i></li>

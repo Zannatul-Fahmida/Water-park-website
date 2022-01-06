@@ -84,10 +84,10 @@ const ManageAllProduct = () => {
     }
     return (
         <div>
-            <div className="cardHeader">
-                <h2>Manage All Car</h2>
-                <h2>Total Cars {cars.length}</h2>
-                <Link to="" className="view-all-btn">View All</Link>
+            <div className="d-flex justify-content-between">
+                <h2>Manage All Rides</h2>
+                <h2>Total Rides {cars.length}</h2>
+                <Link to="" className="view-all-btn d-flex align-items-center">View All</Link>
             </div>
             <table>
                 <thead>

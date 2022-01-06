@@ -33,7 +33,7 @@ const AddBlog = () => {
     return (
         <div className="text-center w-100">
             <Form onSubmit={handleAddBlog}>
-                <h2 className="add-blog-title">Add Blogs</h2>
+                <h2 className="add-blog-title mb-4">Add Blogs</h2>
                 <FloatingLabel className="mb-2" controlId="floatingPassword1" label="Image URL">
                     <Form.Control type="text" ref={imageRef} placeholder="Image URL" />
                 </FloatingLabel>

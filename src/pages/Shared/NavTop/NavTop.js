@@ -1,6 +1,6 @@
 import React from 'react';
 import './NavTop.css'
-import logo from '../../../images/logo99.png'
+import logo from '../../../images/268400530_373968071167259_3189583390863392829_n.png';
 
 const NavTop = () => {
     return (
@@ -10,7 +10,7 @@ const NavTop = () => {
                     <div className="col-lg-4 ">
                     <a className="navbar-brand" href="/">
                             <div className="logo">
-                                <img className='img-fluid' src={logo} alt="" />
+                                <h2 className="text-dark"><img style={{height: '100px'}} className='img-fluid' src={logo} alt="" />Water <span className='text-info'>Kingdom</span></h2>
                             </div>
                         </a>
                     </div>

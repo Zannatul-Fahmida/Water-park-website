@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
@@ -70,10 +70,10 @@ const ManageAllBooking = () => {
     }
     return (
         <div className="px-3 manage-booking">
-            <div className="cardHeader">
+            <div className="d-flex justify-content-between">
                 <h2>Recent Orders</h2>
                 <h2>Total Booking {booking.length}</h2>
-                <Link to="" className="view-all-btn">View All</Link>
+                <Link to="" className="view-all-btn d-flex align-items-center">View All</Link>
             </div>
             <table>
                 <thead>

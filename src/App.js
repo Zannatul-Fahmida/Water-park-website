@@ -21,9 +21,6 @@ import Membership from './pages/Home/Membership/Membership';
 import Rides from './pages/Home/Rides/Rides/Rides';
 import Login from './pages/Login/Login/Login';
 
-
-
-
 function App() {
   return (
     <div className="App">
@@ -42,10 +39,10 @@ function App() {
           <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
           <Route path={`/dashboard/payment`} element={<Payment />}> </Route>
           <Route path={`/dashboard/manageAllBooking`} element={<ManageAllBooking />}> </Route>
-          <Route path={`/dashboard/addProduct`} element={<AddProduct />}> </Route>
+          <Route path={`/dashboard/addRide`} element={<AddProduct />}> </Route>
           <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin />}> </Route>
           <Route path={`/dashboard/addBlog`} element={<AddBlog />}> </Route>
-          <Route path={`/dashboard/manageAllProduct`} element={<ManageAllProduct />}> </Route>
+          <Route path={`/dashboard/manageAllRides`} element={<ManageAllProduct />}> </Route>
           <Route path={`/dashboard/manageAllProduct/update/:id`} element={<Update />}> </Route>
         </Route>
         <Route path="rides" element={<Rides />} />

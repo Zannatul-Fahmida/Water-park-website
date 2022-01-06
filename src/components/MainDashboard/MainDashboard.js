@@ -1,14 +1,13 @@
-import { faApple, faBlogger } from '@fortawesome/free-brands-svg-icons';
-import { faAmbulance, faCarCrash, faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faApple, faBlogger, faFortAwesome } from '@fortawesome/free-brands-svg-icons';
+import { faAmbulance, faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
-import { Link, useRouteMatch, Switch, Route, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import ProfilePopper from '../../components/ProfilePopper/ProfilePopper';
 import './MainDashboard.css';
 import BarCharts from '../../components/UserDashboard/Charts/BarCharts';
 import BookingPieChart from '../../components/UserDashboard/Charts/BookingPieChart';
 import useFirebase from '../../hooks/useFirebase';
-import AdminRoute from '../AdminRoute/AdminRoute';
 
 const MainDashboard = () => {
     /* let list = document.querySelectorAll('.navigation li');
@@ -73,11 +72,11 @@ const MainDashboard = () => {
                         </>}
                         {admin && <>
                             <li>
-                                <Link to={`/dashboard/addProduct`}>
+                                <Link to={`/dashboard/addRide`}>
                                     <span className="icon">
                                         <FontAwesomeIcon className="faIcon" icon={faAmbulance}></FontAwesomeIcon>
                                     </span>
-                                    <span className="title">Add a Car</span>
+                                    <span className="title">Add a Ride</span>
                                 </Link>
                             </li>
                             <li>
@@ -105,11 +104,11 @@ const MainDashboard = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to={`/dashboard/manageAllProduct`}>
+                                <Link to={`/dashboard/manageAllRides`}>
                                     <span className="icon">
-                                        <FontAwesomeIcon className="faIcon" icon={faCarCrash}></FontAwesomeIcon>
+                                        <FontAwesomeIcon className="faIcon" icon={faFortAwesome}></FontAwesomeIcon>
                                     </span>
-                                    <span className="title">Manage All Car</span>
+                                    <span className="title">Manage All Rides</span>
                                 </Link>
                             </li>
                         </>}

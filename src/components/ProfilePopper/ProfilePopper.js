@@ -56,6 +56,12 @@ const ProfilePopper = () => {
                                     <div className="dropdown-item">
                                         <Link to={`/dashboard/manageAllBooking`}>Manage All Booking</Link>
                                     </div>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/manageAllRides`}>Manage All Rides</Link>
+                                    </div>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/addRide`}>Add A Ride</Link>
+                                    </div>
                                 </>
                         }
 

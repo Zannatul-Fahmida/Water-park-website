@@ -22,63 +22,53 @@ const AddProduct = () => {
     }
     return (
         <div>
-            <h2>Add a Car Details</h2>
+            <h2>Add a Ride Details</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-main" style={{ borderRadius: "15px", maxWidth: '85rem' }}>
                     <Row>
                         <Col style={{ width: '550px', margin: '0 auto' }} md={12} xs={12} className="pr-md-4">
                             <Row>
-                                <Col md={6} sm={12}>
-                                    <label>Car Name</label>
+                                <Col xs={12}>
+                                    <label>Ride Name</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
                                         defaultValue=""
                                         {...register("name", { required: true })}
-                                        placeholder="Car Name"
-                                    />
-                                </Col>
-                                <Col md={6} sm={12}>
-                                    <label>Mileage</label>
-                                    <input
-                                        type="text"
-                                        className="our-form-input"
-                                        defaultValue=""
-                                        {...register("mileage", { required: true })}
-                                        placeholder="Car Mileage"
+                                        placeholder="Ride Name"
                                     />
                                 </Col>
                             </Row>
                             <Row>
                                 <Col md={6} sm={12}>
-                                    <label>Car Price</label>
+                                    <label>Ride Price</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
                                         defaultValue=""
                                         {...register("price", { required: true })}
-                                        placeholder="Car Price"
+                                        placeholder="Ride Price"
                                     />
                                 </Col>
                                 <Col md={6} sm={12}>
-                                    <label>Car Image</label>
+                                    <label>Ride Image</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
                                         defaultValue=""
                                         {...register("img", { required: true })}
-                                        placeholder="Put Car Image Link"
+                                        placeholder="Put Ride Image Link"
                                     />
                                 </Col>
                             </Row>
-                            <label>Car Details</label>
+                            <label>Ride Description</label>
                             <textarea
                                 type="textarea"
                                 style={{ height: '150px' }}
                                 className="our-form-input"
                                 defaultValue=""
                                 {...register("details", { required: true })}
-                                placeholder="Type Car Details"
+                                placeholder="Type Ride Description"
                             />
                             <br />
                             {/* <Button type="submit">Send</Button> */}

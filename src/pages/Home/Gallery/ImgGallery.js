@@ -107,7 +107,7 @@ const ImgGallery = () => {
                     <Fade right duration={2000} distance="40px">
                     <h2>CAPTURED MOMENTS IN AQUATICA</h2>
                     </Fade>
-                    <p className='text-secondary'>This is a very popular and famous Water Theme Park & Resorts.This is the major entertrainment place to visit, relax and enjoy a lot.</p>
+                    <p className='text-secondary w-100'>This is a very popular and famous Water Theme Park & Resorts.This is the major entertrainment place to visit, relax and enjoy a lot.</p>
                 </div>
                 <div className='py-3' style={{
                     display: "block",
@@ -116,7 +116,7 @@ const ImgGallery = () => {
                     overflow: "auto"
                 }}>
                     <Fade bottom duration={1000} distance="40px">
-                    <Gallery images={IMAGES} enableImageSelection={false} tileViewportStyle={myTileViewportStyleFn} />
+                    <Gallery fluid images={IMAGES} enableImageSelection={false} tileViewportStyle={myTileViewportStyleFn} />
                     </Fade>
                 </div>
 

@@ -21,8 +21,8 @@ const Rides = () => {
             <NavTop></NavTop>
             <Navigation></Navigation>
             <Container className='py-5'>
-            <h2 className='text-info mb-5'>Our Rides here available</h2>
-                <Row xs={2} md={3} className="g-4 ">
+            <h2 className='mb-5'>Our Rides Available Here</h2>
+                <Row xs={1} md={3} className="g-4">
                 {
                     rides.map(ride=><Ride
                         key={ride._id}
