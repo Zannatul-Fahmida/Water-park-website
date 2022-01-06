@@ -1,74 +1,40 @@
 import { scaleOrdinal } from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
 import React, { useEffect, useState } from 'react';
-import { Bar, BarChart, CartesianGrid, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, BarChart, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import useFirebase from '../../../hooks/useFirebase';
 
 const BarCharts = () => {
-    const pdata = [
-        {
-            name: 'Python',
-            student: 13,
-            fees: 10
-        },
-        {
-            name: 'Javascript',
-            student: 15,
-            fees: 12
-        },
-        {
-            name: 'Javascript',
-            student: 48,
-            fees: 68
-        },
-        {
-            name: 'CSS',
-            student: 8,
-            fees: 15
-        },
-        {
-            name: 'Html',
-            student: 89,
-            fees: 45
-        }, {
-            name: 'Python',
-            student: 13,
-            fees: 74
-        },
-        {
-            name: 'Javascript',
-            student: 15,
-            fees: 84
-        },
-        {
-            name: 'PHP',
-            student: 48,
-            fees: 19
-        },
-    ]
     const colors = scaleOrdinal(schemeCategory10).range();
-    const [booking, setBooking] = useState([]);
+    const { user } = useFirebase();
+    const [myBookings, setMyBookings] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('https://safe-crag-22535.herokuapp.com/booking')
+        fetch(`https://waterparkserver.herokuapp.com/booking/${user.email}`)
             .then(res => res.json())
             .then(data => {
-                setBooking(data)
+                setMyBookings(data)
+                setLoading(false);
             })
-    }, [])
+    }, [user.email]);
+    if(loading){
+
+    }
     return (
         <div>
             <h4>Bookings</h4>
             <ResponsiveContainer width="100%" aspect={3}>
-                <BarChart data={pdata} width={500} height={300} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                    <XAxis dataKey="name" interval={'preserveStartEnd'} />
+                <BarChart data={myBookings} width={500} height={300} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+                    <XAxis dataKey="packageName" interval={'preserveStartEnd'} itemStyle={{ color: "white" }}/>
                     <YAxis />
-                    <Tooltip itemStyle={{ color: "white" }} contentStyle={{ backgroundColor: "blue" }} />
+                    <Tooltip itemStyle={{ color: "white" }} contentStyle={{ backgroundColor: "#FF8042" }} />
                     <Legend />
-                    <Bar dataKey="student" fill="#8884d8">
-                        {/* {pdata.map((entry, index) => (
+                    <Bar dataKey="amount" fill="#8884d8">
+                        {myBookings.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index % 20]} />
-                        ))} */}
+                        ))}
                     </Bar>
-                    <Bar dataKey="fees" fill="#ffc658"/>
+                    <Bar dataKey="Empty" fill="#ffc658"/>
                 </BarChart>
             </ResponsiveContainer>
         </div>

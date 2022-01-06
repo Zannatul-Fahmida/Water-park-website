@@ -1,24 +1,16 @@
-import axios from 'axios';
 import React from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import toast, { Toaster } from 'react-hot-toast';
-import swal from 'sweetalert';
+import { Toaster } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
+import { addNewRide } from '../../../redux/slices/BookingSlice';
 
 const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
+    const dispatch = useDispatch();
     const onSubmit = data => {
-        const loading = toast.loading("Loading.....")
-        axios.post('http://localhost:5000/rides', data)
-            .then(res => {
-                if (res.data.insertedId) {
-                    toast.success('Added', {
-                        id: loading,
-                      });
-                    reset();
-                    return swal("Successfully Added!", "Your Ride has been successfully added.", "success");
-                }
-            })
+        dispatch(addNewRide(data))
+        reset();
     }
     return (
         <div>

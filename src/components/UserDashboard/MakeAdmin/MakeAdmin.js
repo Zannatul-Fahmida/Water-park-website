@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     const onSubmit = data => {
         // console.log(data);
         const loadingId = toast.loading("Please Wait...");
-        fetch('http://localhost:5000/users/admin',{
+        fetch('https://waterparkserver.herokuapp.com/users/admin',{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

@@ -16,17 +16,7 @@ const Reviews = () => {
     useEffect(() => {
       dispatch(fetchReviews());
     },[])
-    const reviews = useSelector((state) => state.booking.reviews)
-    console.log(reviews);
-  /*   useEffect(() => {
-        fetch('https://safe-crag-22535.herokuapp.com/review')
-            .then(res => res.json())
-            .then(data => {
-                setReviews(data);
-                setLoading(false);
-            })
-            .catch(error => toast.error(error.message))
-    }, []) */
+    const reviews = useSelector((state) => state.booking.reviews);
     const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => (
         <img src="https://cdn-icons-png.flaticon.com/512/271/271218.png" alt="prevArrow" {...props} />
     );

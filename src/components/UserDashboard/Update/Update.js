@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Button, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router';
@@ -11,7 +11,7 @@ const Update = () => {
     const history = useNavigate();                
     const onSubmit = data => {
         console.log(data)
-        const url = `http://localhost:5000/rides/${id}`
+        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -31,7 +31,7 @@ const Update = () => {
     console.log(ride);
 
     useEffect(() => {
-        const url = `http://localhost:5000/rides/${id}`
+        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setRide(data))

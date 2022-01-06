@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
@@ -12,7 +12,7 @@ const SendReview = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/reviews', data)
+        axios.post('https://waterparkserver.herokuapp.com/reviews', data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Thank for Your Feedback!')

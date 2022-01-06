@@ -1,8 +1,7 @@
+import { default as Axios, default as axios } from "axios";
 import React from 'react';
-import Axios from "axios";
-import axios from 'axios';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Col, Row, Button } from 'react-bootstrap';
 
 const Payment = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
@@ -31,7 +30,7 @@ const Payment = () => {
                 key2: "value2"
             }
         }
-        axios.post('http://localhost:5000/createOrder', orderData)
+        axios.post('https://waterparkserver.herokuapp.com/createOrder', orderData)
             .then(res => {
                 const response = res;
                 const { data } = response;
@@ -44,7 +43,7 @@ const Payment = () => {
                     handler: async (response) => {
                         try {
                             const paymentId = response.razorpay_payment_id;
-                            const url = `http://localhost:5000/capture/${paymentId}`;
+                            const url = `https://waterparkserver.herokuapp.com/capture/${paymentId}`;
                             const captureResponse = await Axios.post(url, {});
                             console.log(captureResponse.data);
                             window.location.reload();

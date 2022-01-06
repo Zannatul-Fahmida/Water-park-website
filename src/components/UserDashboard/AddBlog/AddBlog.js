@@ -12,9 +12,9 @@ const AddBlog = () => {
         const title = titleRef.current.value;
         const date = dateRef.current.value;
         const description = descriptionRef.current.value;
-        const newBlog = { image, title, description, date }; 
-        console.log(newBlog);     
-        fetch('http://localhost:5000/blogs', {
+        const newBlog = { image, title, description, date };
+        console.log(newBlog);
+        fetch('https://waterparkserver.herokuapp.com/blogs', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
