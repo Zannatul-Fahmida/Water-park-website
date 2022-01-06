@@ -6,7 +6,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
 import useFirebase from '../../../hooks/useFirebase';
-import logo from "../../../images/logo99.png";
+import logo from "../../../images/logo100.png";
 import paid from "../../../images/paid.png";
 import signature from "../../../images/signature.png";
 import "./MyOrder.css";
