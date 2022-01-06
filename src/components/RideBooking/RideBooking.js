@@ -4,18 +4,11 @@ import { Col, Container, Row, Button, Image } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
 import toast, { Toaster } from 'react-hot-toast';
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import NavTop from '../../pages/Shared/NavTop/NavTop';
 import Navigation from '../../pages/Shared/Navigation/Navigation';
 import Footer from '../../pages/Shared/Footer/Footer';
 import slider from '../../images/28361 [Converted].png';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useForm } from 'react-hook-form';
-import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate, useParams } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebase';
-
 
 const RideBooking = () => {
     const { id } = useParams();
