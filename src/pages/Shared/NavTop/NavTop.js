@@ -6,11 +6,11 @@ const NavTop = () => {
     return (
         <div className='text-center '>
             <div className="container">
-                <div className="row d-flex align-items-center">
-                    <div className="col-lg-4 ">
-                    <a className="navbar-brand" href="/">
+                <div className="row d-flex align-items-center my-2">
+                    <div className="col-lg-4">
+                    <a className="navbar-brand d-flex justify-content-center" href="/">
                             <div className="logo">
-                                <h2 className="text-dark"><img style={{height: '100px'}} className='img-fluid' src={logo} alt="" />Water <span className='text-info'>Kingdom</span></h2>
+                                <h2 className="text-dark"><img style={{height: '80px'}} className='img-fluid' src={logo} alt="" />Water <span className='text-info'>Kingdom</span></h2>
                             </div>
                         </a>
                     </div>

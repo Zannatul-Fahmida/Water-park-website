@@ -122,7 +122,7 @@ const MyOrders = () => {
     }
     return (
         <div>
-            <div className="cardHeader">
+            <div className="cardHeader d-flex justify-content-between align-items-center">
                 <h2>Recent Orders</h2>
                 <Link to="" className="view-all-btn">View All</Link>
             </div>

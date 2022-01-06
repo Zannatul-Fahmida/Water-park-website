@@ -63,12 +63,12 @@ const Payment = () => {
     }
     return (
         <div>
-            <h2 className='mb-5'>Pay Using Razorpay...</h2>
+            <h2 className='mb-3'>Pay Using Razorpay...</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-main" style={{ borderRadius: "15px", maxWidth: '85rem' }}>
                     <Row>
                         <Col md={12} xs={12} className="pr-md-4">
-                            <Row>
+                            <Row className="align-items-center">
                                 <Col md={6} xs={12}>
                                     <label>Only 2 digit Number Enter Like- "15"</label>
                                     <input
@@ -76,10 +76,10 @@ const Payment = () => {
                                         type="number"
                                         {...register("amount", { required: true, min: 1, max: 99 })}
                                         defaultValue="" />
-                                    {errors.amount && "Enter Currect Amount"}
+                                    {errors.amount && "Enter Correct Amount"}
                                 </Col>
                                 <Col md={6} xs={12}>
-                                    <div className="text-center mt-5">
+                                    <div className="text-center pb-3 pb-md-0">
                                         <Button type="submit" className="btn-main" style={{ padding: ".68rem 2rem" }}>
                                             Pay Now
                                         </Button>

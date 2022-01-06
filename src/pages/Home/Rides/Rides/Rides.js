@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
+import Footer from '../../../Shared/Footer/Footer';
 import Navigation from '../../../Shared/Navigation/Navigation';
 import NavTop from '../../../Shared/NavTop/NavTop';
 import Ride from '../Ride/Ride';
@@ -32,7 +33,7 @@ const Rides = () => {
                     
                 </Row>
             </Container>
-
+                <Footer />
         </div>
     );
 };
