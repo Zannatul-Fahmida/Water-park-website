@@ -9,14 +9,14 @@ const AddProduct = () => {
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
         const loading = toast.loading("Loading.....")
-        axios.post('https://safe-crag-22535.herokuapp.com/availableCars', data)
+        axios.post('http://localhost:5000/rides', data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Added', {
                         id: loading,
                       });
                     reset();
-                    return swal("Successfully Added!", "Your car has been successfully added.", "success");
+                    return swal("Successfully Added!", "Your Ride has been successfully added.", "success");
                 }
             })
     }
@@ -25,17 +25,25 @@ const AddProduct = () => {
             <h2>Add a Ride Details</h2>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="form-main" style={{ borderRadius: "15px", maxWidth: '85rem' }}>
-                    <Row>
+                <Row>
                         <Col style={{ width: '550px', margin: '0 auto' }} md={12} xs={12} className="pr-md-4">
                             <Row>
-                                <Col xs={12}>
+                                <Col md={6} sm={12}>
                                     <label>Ride Name</label>
                                     <input
                                         className="our-form-input"
                                         type="text"
-                                        defaultValue=""
                                         {...register("name", { required: true })}
                                         placeholder="Ride Name"
+                                    />
+                                </Col>
+                                <Col md={6} sm={12}>
+                                    <label>Ride Code</label>
+                                    <input
+                                        type="text"
+                                        className="our-form-input"
+                                        {...register("code", { required: true })}
+                                        placeholder="Ride Code"
                                     />
                                 </Col>
                             </Row>
@@ -45,7 +53,6 @@ const AddProduct = () => {
                                     <input
                                         className="our-form-input"
                                         type="text"
-                                        defaultValue=""
                                         {...register("price", { required: true })}
                                         placeholder="Ride Price"
                                     />
@@ -55,7 +62,6 @@ const AddProduct = () => {
                                     <input
                                         className="our-form-input"
                                         type="text"
-                                        defaultValue=""
                                         {...register("img", { required: true })}
                                         placeholder="Put Ride Image Link"
                                     />

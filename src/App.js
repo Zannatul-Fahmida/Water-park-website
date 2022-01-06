@@ -20,6 +20,7 @@ import FullBlog from './pages/Home/FullBlog/FullBlog';
 import Membership from './pages/Home/Membership/Membership';
 import Rides from './pages/Home/Rides/Rides/Rides';
 import Login from './pages/Login/Login/Login';
+import RideBooking from './components/RideBooking/RideBooking';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="contact" element={<Contact />} />
         <Route path="/membership" element={<Membership />} />
         <Route path={`/booking/:id`} element={<PackageBooking />} />
+        <Route path={`/ridebooking/:id`} element={<RideBooking />} />
         <Route path={`/blogs/:blogId`} element={<FullBlog />} />
         <Route exact path={`/dashboard`} element={<MainDashboard />}>
           <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
