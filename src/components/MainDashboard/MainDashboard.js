@@ -1,5 +1,5 @@
 import { faApple } from '@fortawesome/free-brands-svg-icons';
-import { faAmbulance, faCarCrash, faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faAmbulance, faCarCrash, faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser, faWater } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link, useRouteMatch, Switch, Route, Outlet } from 'react-router-dom';
@@ -11,14 +11,6 @@ import useFirebase from '../../hooks/useFirebase';
 import AdminRoute from '../AdminRoute/AdminRoute';
 
 const MainDashboard = () => {
-    /* let list = document.querySelectorAll('.navigation li');
-    function activeLink(){
-        list.forEach((item) => 
-        item.classList.remove('hovered'));
-        this.classList.add('hovered')
-    }
-    list.forEach((item)=> 
-    item.addEventListener('mouseover', activeLink)); */
     const { admin } = useFirebase();
     const [isActive, setActive] = useState(false);
     const handleToggle = () => {
@@ -32,9 +24,9 @@ const MainDashboard = () => {
                         <li>
                             <Link to="/">
                                 <span className="icon">
-                                    <FontAwesomeIcon className="faIcon" icon={faApple}></FontAwesomeIcon>
+                                    <FontAwesomeIcon className="faIcon" icon={faWater}></FontAwesomeIcon>
                                 </span>
-                                <span className="title"><strong>Hot Wheels</strong> </span>
+                                <span className="title"><strong>Water Kingdom</strong> </span>
                             </Link>
                         </li>
                         <li>

@@ -26,7 +26,7 @@ const BookingPieChart = () => {
     return (
             <ResponsiveContainer width="100%">
                 <PieChart width={400} height={400}>
-                    <Tooltip itemStyle={{ color: "white" }} contentStyle={{ backgroundColor: "blue" }} />
+                    <Tooltip itemStyle={{ color: "white" }} contentStyle={{ backgroundColor: "#2CA02C" }} />
                     <Legend layout="vertical" align="right" />
                     <Pie
                         data={bookings}

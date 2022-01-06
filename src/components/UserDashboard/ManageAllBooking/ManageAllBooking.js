@@ -1,21 +1,23 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Table, Button, Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
+import { addToAllOrder, deleteOrder, fetchAllOrders, removeFromAllOrders } from '../../../redux/slices/BookingSlice';
 
 const ManageAllBooking = () => {
-    const [booking, setBooking] = useState([]);
+    const [bookingdf, setBooking] = useState([]);
     const [loading, setLoading] = useState(true);
+    const dispatch = useDispatch();
+    const booking = useSelector((state) => state.booking.allOrders)
+    console.log(booking);
     useEffect(() => {
-        fetch('http://localhost:5000/booking')
-            .then(res => res.json())
-            .then(data => {
-                setBooking(data)
-                setLoading(false)
-            })
+        dispatch(fetchAllOrders())
+        setLoading(false)
     }, [])
+
     // ORDER DETELE HANDLER
     const handleDelete = (id) => {
         // const proceed = window.confirm('Are You sure to Cancel the Booking?')
@@ -27,43 +29,20 @@ const ManageAllBooking = () => {
             dangerMode: true,
         }).then(wantDelete => {
             if (wantDelete) {
-                const loadingId = toast.loading("Deleting...");
-                const url = `http://localhost:5000/booking/${id}`
-                fetch(url, {
-                    method: 'DELETE'
+                dispatch(deleteOrder(id))
+                .then(res =>{
+                    if(res.meta.requestStatus === "fulfilled"){
+                        dispatch(removeFromAllOrders(id))
+                    }
                 })
-                    .then(res => res.json())
-                    .then(data => {
-                        toast.success('Deleted', {
-                            id: loadingId,
-                        });
-                        if (data.deletedCount > 0) {
-                            const remaining = booking.filter(booking => booking?._id !== id)
-                            setBooking(remaining);
-                            return swal("Successfully Delete!", "Your order has been successfully deleted.", "success");
-                        }
-                    })
-                    .catch(err => {
-                        toast.dismiss(loading);
-                        swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true })
-                    })
             }
         })
     }
     // HANDLE STATUS CHANGE
     const handleStatusChange = (id, status) => {
-        let modifiedBooking = [];
-        booking.forEach(order => {
-            if (order._id === id) {
-                order.status = status;
-            }
-            modifiedBooking.push(order)
-        })
-        setBooking(modifiedBooking)
-
         const modifiedStatus = { id, status }
 
-        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
+        axios.patch(`https://waterparkserver.herokuapp.com/booking/${id}`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => alert(error.message))
     }

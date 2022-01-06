@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, signOut, onAuthStateChanged, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeFirebase from '../pages/Login/firebase/firebase.init';
 
@@ -77,7 +77,7 @@ const useFirebase = () => {
 
      // admin checking
      useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://waterparkserver.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setAdmin(data.admin))
     }, [user.email])
@@ -94,7 +94,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName, method) => {
         const user = { email, displayName };
-        fetch('http://localhost:5000/users', {
+        fetch('https://waterparkserver.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Col, Row, Button } from 'react-bootstrap';
+import React from 'react';
+import { Button, Col, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -9,7 +9,7 @@ const MakeAdmin = () => {
     const onSubmit = data => { 
         // console.log(data);
         const loadingId = toast.loading("Please Wait...");
-        fetch('http://localhost:5000/users/admin',{
+        fetch('https://waterparkserver.herokuapp.com/users/admin',{
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
