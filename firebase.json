@@ -1,26 +1,14 @@
 {
   "hosting": {
     "public": "build",
-<<<<<<< HEAD
     "rewrites": [ {
       "source": "**",
       "destination": "/index.html"
     } ],
-=======
->>>>>>> review-gallery
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-<<<<<<< HEAD
-=======
     ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
->>>>>>> review-gallery
-    ]
   }
 }
