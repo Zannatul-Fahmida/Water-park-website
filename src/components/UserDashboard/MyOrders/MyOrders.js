@@ -5,7 +5,7 @@ import { Button, Spinner } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 import logo from "../../../images/logo99.png";
 import paid from "../../../images/paid.png";
 import signature from "../../../images/signature.png";
@@ -13,7 +13,7 @@ import "./MyOrder.css";
 
 
 const MyOrders = () => {
-    const { user } = useFirebase();
+    const { user } = useAuth();
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -27,6 +27,7 @@ const MyOrders = () => {
     // HANDLE DOWNLOAD
     const handleGeneratPdf = (order) => {
         const { _id, status,packageName,razorpay_payment_id,razorpay_order_id,  name, email, phone, amount } = order;
+        console.log(order);
         let doc = new jsPDF('landscape', 'px', 'a4', 'false');
         doc.addImage(logo, 'PNG', 65, 20, 120, 60)
         doc.addImage(paid, 'PNG', 450, 20, 120, 60)
@@ -85,7 +86,10 @@ const MyOrders = () => {
             "amount": amount * 100,
             "currency": "USD",
             receipt: "order_rcptid_11",
-            key: process.env.RAZOR_PAY_TEST_KEY,
+            notes: {
+                key1: "value3",
+                key2: "value2"
+            }
         }
         axios.post('https://waterparkserver.herokuapp.com/createOrder', orderData)
             .then(res => {
@@ -102,19 +106,21 @@ const MyOrders = () => {
                             const razorpay_payment_id = response.razorpay_payment_id;
                             const razorpay_order_id = response.razorpay_order_id;
                             const razorpay_signature = response.razorpay_signature;
-                            const url = `https://waterparkserver.herokuapp.com/verifyOrder`;
+                            const url = `http://localhost:5000/verifyOrder`;
                             const captureResponse = await axios.post(url, response);
-                            if (captureResponse.data.success) {
+                            console.log(captureResponse);
+                            if (captureResponse.data) {
                                 handleStatusChange(order._id, "On going")
 
                                 const invoice = { razorpay_payment_id, razorpay_order_id, razorpay_signature, ...captureResponse.data };
+                                console.log("inovoice", invoice);
                                 axios.patch(`https://waterparkserver.herokuapp.com/bookingUpdate/${bookingId}`, invoice)
                                     .then(res => {
                                         if(res.data.modifiedCount === 1){
                                             toast.success("Booking Updated")
                                         }
                                     })
-                                    .catch(error => alert(error.message))
+                                    .catch(error => console.log(error.message))
                                 // window.location.reload(); 
                             }
                         } catch (err) {
@@ -196,11 +202,11 @@ const MyOrders = () => {
                                 </td>
                                 <td>
                                     {
-                                        order.message === "Payment has been verified" ?
+                                        order.status !== "Pending" ?
                                             <Button onClick={() => handleGeneratPdf(order)} variant="info bg-info m-1" className='white-space-off'>Download Invoice</Button>
                                             :
                                             <div className='d-flex'>
-                                            <Button onClick={() => handlePay(order)} variant="outline-success" className='white-space-off'>Pay Now</Button>
+                                            <Button onClick={() => handlePay(order)} variant="success" className='white-space-off'>Pay Now</Button>
                                             <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger ms-1" className='white-space-off'>Cancel</Button>
                                             </div>
                                     }

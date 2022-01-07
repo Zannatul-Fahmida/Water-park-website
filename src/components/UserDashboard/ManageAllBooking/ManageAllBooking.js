@@ -8,7 +8,6 @@ import swal from 'sweetalert';
 import { addToAllOrder, deleteOrder, fetchAllOrders, removeFromAllOrders } from '../../../redux/slices/BookingSlice';
 
 const ManageAllBooking = () => {
-    const [bookingdf, setBooking] = useState([]);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
     const booking = useSelector((state) => state.booking.allOrders)

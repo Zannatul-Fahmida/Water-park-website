@@ -4,12 +4,12 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 
 const ManageAllProduct = () => {
     const [loading, setLoading] = useState(true);
     const [cars, setCars] = useState([]);
-    const { user } = useFirebase();
+    const { user } = useAuth();
     const history = useNavigate();
 
     useEffect(() => {

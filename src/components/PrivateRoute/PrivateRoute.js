@@ -2,15 +2,14 @@ import React from 'react';
 import { Spinner } from 'react-bootstrap';
 import { Navigate, useLocation } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 const PrivateRoute = ({ children, ...rest }) => {
     const { user, isLoading } = useFirebase();
     const location = useLocation();
     if (isLoading) {
         return <div>
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
+            <LoadingSpinner />
         </div>
     }
     if (user.email) {

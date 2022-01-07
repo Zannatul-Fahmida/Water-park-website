@@ -7,7 +7,6 @@ const Profile = () => {
     
     return (
         <div>
-            
             <h2>Your Email : {user.email}</h2>
         </div>
     );

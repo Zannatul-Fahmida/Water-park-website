@@ -2,12 +2,13 @@ import React from 'react';
 import { Image, Nav, OverlayTrigger, Popover, Button } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth';
 import useFirebase from '../../hooks/useFirebase';
 // import useAuth from '../hooks/useAuth';
 import "./ProfilePopper.css";
 
 const ProfilePopper = () => {
-    const { user, logOut, admin } = useFirebase();
+    const { user, logOut, admin } = useAuth();
     const { email, displayName: name, photoURL: img } = user;
     const navigate = useNavigate();
     const signOut = () => {
@@ -35,7 +36,16 @@ const ProfilePopper = () => {
                         </div>
                         <hr />
                         {
-                            !admin ?
+                            admin ?
+                                <>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/makeAdmin`}>Make Admin</Link>
+                                    </div>
+                                    <div className="dropdown-item">
+                                        <Link to={`/dashboard/manageAllBooking`}>Manage All Booking</Link>
+                                    </div>
+                                </>
+                                :
                                 <>
                                     <div className="dropdown-item">
                                         <Link to={`/dashboard/myBookings`}>My Booking</Link>
@@ -45,15 +55,6 @@ const ProfilePopper = () => {
                                     </div>
                                     <div className="dropdown-item">
                                         <Link to={`/dashboard/payment`}>Payment</Link>
-                                    </div>
-                                </>
-                                :
-                                <>
-                                    <div className="dropdown-item">
-                                        <Link to={`/dashboard/makeAdmin`}>Make Admin</Link>
-                                    </div>
-                                    <div className="dropdown-item">
-                                        <Link to={`/dashboard/manageAllBooking`}>Manage All Booking</Link>
                                     </div>
                                 </>
                         }
