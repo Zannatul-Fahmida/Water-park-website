@@ -8,7 +8,8 @@
     min-height: 300px;
 }
 .box:hover {
-    background: #ff0057;
+    /* background: #ff0057; */
+    background: #00b6e4;
 }
 .box p {
     margin: 0;
@@ -20,7 +21,7 @@
     padding: 0;
     transition: 0.5s;
     font-size: 18px;
-    color: #ff0057;
+    color: #00b6e4;
     font-weight: 700;
     line-height: 20px;
     text-transform: uppercase;
@@ -45,6 +46,7 @@
     overflow: hidden;
 }
 .box .imgBox img {
+    height: 100px;
     border-radius: 50%;
     border: 5px solid #fff;
 }

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import Rating from 'react-rating';
+import useFirebase from '../../../../hooks/useFirebase';
 import './ReviewCard.css';
 
 const ReviewCard = ({ item }) => {
@@ -8,7 +9,7 @@ const ReviewCard = ({ item }) => {
         <div className="py-5">
             <div className="box">
                 <div className="imgBox">
-                    <img src="https://lh3.googleusercontent.com/ogw/ADea4I5r3I8B9WmmurWPFz3ir_5IYTbcOeBF3SONGQwVXA=s83-c-mo" alt="" />
+                    <img className="img-fluid" src={item?.image || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'} alt="" />
                 </div>
                 <p>{item.comment}</p>
                 <Rating

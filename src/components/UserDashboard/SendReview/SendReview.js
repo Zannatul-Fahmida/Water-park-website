@@ -31,6 +31,16 @@ const SendReview = () => {
                         <Row>
                             <Col style={{ width: '550px', margin: '0 auto' }} md={12} xs={12} className="pr-md-4">
                                 <Row>
+                                    <Col xs={12}>
+                                        <label>Image</label>
+                                        <input
+                                            className="our-form-input"
+                                            type="text"
+                                            defaultValue={user.photoURL || 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png'}
+                                            {...register("image")}
+                                            placeholder="Your Image"
+                                        />
+                                    </Col>
                                     <Col md={6}>
                                         <label>Name</label>
                                         <input
