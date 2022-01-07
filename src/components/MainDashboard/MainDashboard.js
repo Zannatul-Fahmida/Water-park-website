@@ -1,5 +1,5 @@
-import { faApple, faBlogger, faFortAwesome } from '@fortawesome/free-brands-svg-icons';
-import { faAmbulance, faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser, faWater } from '@fortawesome/free-solid-svg-icons';
+import { faBlogger, faFortAwesome } from '@fortawesome/free-brands-svg-icons';
+import { faCartArrowDown, faCartPlus, faChargingStation, faComment, faDollarSign, faEye, faHandsHelping, faHome, faParachuteBox, faPeopleArrows, faSearch, faSignOutAlt, faToggleOff, faUser, faWater } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router-dom';
@@ -66,7 +66,7 @@ const MainDashboard = () => {
                             <li>
                                 <Link to={`/dashboard/addRide`}>
                                     <span className="icon">
-                                        <FontAwesomeIcon className="faIcon" icon={faAmbulance}></FontAwesomeIcon>
+                                        <FontAwesomeIcon className="faIcon" icon={faParachuteBox}></FontAwesomeIcon>
                                     </span>
                                     <span className="title">Add a Ride</span>
                                 </Link>

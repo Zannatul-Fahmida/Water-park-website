@@ -7,6 +7,7 @@ import './Banner.css';
 import Fade from 'react-reveal/Fade';
 import { Button, Modal } from 'react-bootstrap';
 import intro from '../../../video/production ID_4929174.mp4';
+import useAuth from "../../../hooks/useAuth";
 
 function MyVerticallyCenteredModal(props) {
     return (
@@ -27,6 +28,7 @@ function MyVerticallyCenteredModal(props) {
 
 const Banner = () => {
     const [modalShow, setModalShow] = React.useState(false);
+    const {user} = useAuth();
     const dispatch = useDispatch();
     const {
         register,
@@ -36,6 +38,9 @@ const Banner = () => {
     } = useForm();
 
     const onSubmit = (data) => {
+        data.status = "Pending";
+        data.phone = "8918308609";
+        console.log(data);
         dispatch(postPackageBooking(data))
         reset();
     };
@@ -69,26 +74,31 @@ const Banner = () => {
                                     data-aos-duration="1500">
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         <input
-                                            {...register("user")}
+                                            {...register("name", { required: true })}
                                             className="p-3 my-2 w-100 book-form-input"
                                             placeholder='name'
                                         />
                                         <input
-                                            {...register("email")}
+                                            {...register("email", { required: true })}
                                             className="p-3 my-2 w-100 book-form-input"
+                                            defaultValue={user.email}
                                             placeholder='email'
                                         />
-                                        <br />
-                                        <select className="p-3 my-2 w-100 book-form-input"
-                                            {...register("packages")}>
-                                            <option>Select a packages</option>
-                                            <option value="family">family packages</option>
-                                            <option value="basic">basic packages</option>
-                                            <option value="premium">premium packages</option>
-                                        </select>
-                                        <br />
                                         <input
-                                            {...register("date")}
+                                            {...register("packageName", { required: true })}
+                                            className="p-3 my-2 w-100 book-form-input"
+                                            value='Family Package'
+                                            readOnly
+                                        />
+                                        <input
+                                            {...register("amount", { required: true })}
+                                            className="p-3 my-2 w-100 book-form-input"
+                                            placeholder='$50'
+                                            value="50"
+                                            readOnly
+                                        />
+                                        <input
+                                            {...register("bookingDate", { required: true })}
                                             type="date"
                                             className="p-3 my-2 w-100 book-form-input"
                                         />

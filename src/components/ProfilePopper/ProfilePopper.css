@@ -7,3 +7,9 @@
     font-size: 16px;
     padding: 4px;
 }
+.dropdown-item:active a {
+    color: #fff;
+}
+.dropdown-item:active {
+    border-radius: 5px;
+}

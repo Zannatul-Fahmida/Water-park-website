@@ -21,9 +21,9 @@ const FullBlog = () => {
             <Navigation />
             <Container className="my-5">
                 <Image fluid src={blog.image} />
-                <h2>{blog.title}</h2>
-                <h5>{blog.date}</h5>
-                <p>{blog.description}</p>
+                <h2 className="my-2">{blog.title}</h2>
+                <h5 className="my-2">Publishing Date: <span className="text-info">{blog.date}</span></h5>
+                <p className="text-secondary">{blog.description}</p>
             </Container>
             <Footer />
         </>

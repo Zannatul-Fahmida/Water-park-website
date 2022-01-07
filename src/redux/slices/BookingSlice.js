@@ -33,7 +33,7 @@ export const postPackageBooking = createAsyncThunk(
     "booking/postPackageBooking",
     async (data) => {
         const loading = toast.loading("Loading...");
-        const response = await axios.post("https://waterparkserver.herokuapp.com/packageBooking", data)
+        const response = await axios.post("https://waterparkserver.herokuapp.com/booking", data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.dismiss(loading);

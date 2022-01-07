@@ -1,54 +1,66 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import MainDashboard from './components/MainDashboard/MainDashboard';
-import AddProduct from './components/UserDashboard/AddProduct/AddProduct';
-import MakeAdmin from './components/UserDashboard/MakeAdmin/MakeAdmin';
-import ManageAllBooking from './components/UserDashboard/ManageAllBooking/ManageAllBooking';
-import SendReview from './components/UserDashboard/SendReview/SendReview';
-import ManageAllProduct from './components/UserDashboard/ManageAllProduct/ManageAllProduct';
-import MyOrders from './components/UserDashboard/MyOrders/MyOrders';
-import About from './pages/Home/About/About';
-import Contact from './pages/Home/Contact/Contact';
-import Home from './pages/Home/Home/Home';
-import Signup from './pages/Login/SignUp/Signup';
-import Payment from './components/UserDashboard/Payment/Payment';
-import PackageBooking from './pages/PackageBooking/PackageBooking';
-import Update from './components/UserDashboard/Update/Update';
-import AddBlog from './components/UserDashboard/AddBlog/AddBlog';
-import FullBlog from './pages/Home/FullBlog/FullBlog';
-import Membership from './pages/Home/Membership/Membership';
-import Rides from './pages/Home/Rides/Rides/Rides';
-import Login from './pages/Login/Login/Login';
-import RideBooking from './components/RideBooking/RideBooking';
+import AdminRoute from './components/AdminRoute/AdminRoute';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import AuthProvider from './hooks/AuthProvider';
+import { lazy, Suspense } from 'react';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+
+const Home = lazy(() => import('./pages/Home/Home/Home'));
+const Login = lazy(() => import('./pages/Login/Login/Login'));
+const Signup = lazy(() => import('./pages/Login/SignUp/Signup'));
+const Payment = lazy(() => import('./components/UserDashboard/Payment/Payment'));
+const PackageBooking = lazy(() => import('./pages/PackageBooking/PackageBooking'));
+const Update = lazy(() => import('./components/UserDashboard/Update/Update'));
+const Rides = lazy(() => import('./pages/Home/Rides/Rides/Rides'));
+const RideBooking = lazy(() => import('./components/RideBooking/RideBooking'));
+const Contact = lazy(() => import('./pages/Home/Contact/Contact'));
+const About = lazy(() => import('./pages/Home/About/About'));
+const MyOrders = lazy(() => import('./components/UserDashboard/MyOrders/MyOrders'));
+const ManageAllProduct = lazy(() => import('./components/UserDashboard/ManageAllProduct/ManageAllProduct'));
+const SendReview = lazy(() => import('./components/UserDashboard/SendReview/SendReview'));
+const ManageAllBooking = lazy(() => import('./components/UserDashboard/ManageAllBooking/ManageAllBooking'));
+const AddProduct = lazy(() => import('./components/UserDashboard/AddProduct/AddProduct'));
+const MakeAdmin = lazy(() => import('./components/UserDashboard/MakeAdmin/MakeAdmin'));
+const MainDashboard = lazy(() => import('./components/MainDashboard/MainDashboard'));
+const AddBlog = lazy(() => import('./components/UserDashboard/AddBlog/AddBlog'));
+const FullBlog = lazy(() => import('./pages/Home/FullBlog/FullBlog'));
+const Membership = lazy(() => import('./pages/Home/Membership/Membership'));
+
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="about" element={<About />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="/membership" element={<Membership />} />
-        <Route path={`/booking/:id`} element={<PackageBooking />} />
-        <Route path={`/ridebooking/:id`} element={<RideBooking />} />
-        <Route path={`/blogs/:blogId`} element={<FullBlog />} />
-        <Route exact path={`/dashboard`} element={<MainDashboard />}>
-          <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
-          <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
-          <Route path={`/dashboard/payment`} element={<Payment />}> </Route>
-          <Route path={`/dashboard/manageAllBooking`} element={<ManageAllBooking />}> </Route>
-          <Route path={`/dashboard/addRide`} element={<AddProduct />}> </Route>
-          <Route path={`/dashboard/makeAdmin`} element={<MakeAdmin />}> </Route>
-          <Route path={`/dashboard/addBlog`} element={<AddBlog />}> </Route>
-          <Route path={`/dashboard/manageAllRides`} element={<ManageAllProduct />}> </Route>
-          <Route path={`/dashboard/manageAllProduct/update/:id`} element={<Update />}> </Route>
-        </Route>
-        <Route path="rides" element={<Rides />} />
-      </Routes>
+      <AuthProvider>
+        <Suspense fallback={<LoadingSpinner />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="/membership" element={<Membership />} />
+            <Route path={`/blogs/:blogId`} element={<FullBlog />} />
+            <Route path={`/booking/:id`} element={<PackageBooking />} />
+            <Route path={`/ridebooking/:id`} element={<RideBooking />} />
+            <Route exact path={`/dashboard`} element={<PrivateRoute><MainDashboard /> </PrivateRoute>}>
+              <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
+              <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
+              <Route path={`/dashboard/payment`} element={<Payment />}> </Route>
+              <Route path={`/dashboard/manageAllBooking`} element={<AdminRoute><ManageAllBooking /></AdminRoute>}> </Route>
+              <Route path={`/dashboard/addRide`} element={<AdminRoute><AddProduct /> </AdminRoute>}> </Route>
+              <Route path={`/dashboard/makeAdmin`} element={<AdminRoute><MakeAdmin /></AdminRoute>}> </Route>
+              <Route path={`/dashboard/manageAllRides`} element={<AdminRoute><ManageAllProduct /></AdminRoute>}> </Route>
+              <Route path={`/dashboard/manageAllRides/update/:id`} element={<AdminRoute><Update /></AdminRoute>}> </Route>
+              <Route path={`/dashboard/addBlog`} element={<AdminRoute><AddBlog /></AdminRoute>}> </Route>
+              <Route path={`/dashboard/manageAllRides/update/:id`} element={<AdminRoute><Update /></AdminRoute>}> </Route>
+            </Route>
+            <Route path="rides" element={<Rides />} />
+          </Routes>
+        </Suspense>
+      </AuthProvider>
     </div>
   )
 }

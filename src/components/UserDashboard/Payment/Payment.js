@@ -68,18 +68,19 @@ const Payment = () => {
                     <Row>
                         <Col md={12} xs={12} className="pr-md-4">
                             <Row className="align-items-center">
-                                <Col md={6} xs={12}>
-                                    <label>Only 2 digit Number Enter Like- "15"</label>
+                                <Col xs={12} className="d-flex align-items-center justify-content-center my-3">
+                                    <div className="w-75">
                                     <input
                                         className="our-form-input"
                                         type="number"
                                         {...register("amount", { required: true, min: 1, max: 99 })}
-                                        defaultValue="" />
+                                        defaultValue=""
+                                        placeholder='Only 2 digit Number Enter Like- "15"'
+                                        />
                                     {errors.amount && "Enter Correct Amount"}
-                                </Col>
-                                <Col md={6} xs={12}>
-                                    <div className="text-center pb-3 pb-md-0">
-                                        <Button type="submit" className="btn-main" style={{ padding: ".68rem 2rem" }}>
+                                    </div>
+                                    <div className="text-center">
+                                        <Button type="submit" className="btn-main py-0 py-md-2">
                                             Pay Now
                                         </Button>
                                     </div>

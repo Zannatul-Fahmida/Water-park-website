@@ -8,9 +8,11 @@ import useFirebase from '../../../hooks/useFirebase';
 
 const SendReview = () => {
     const { user } = useFirebase();
+    const photo = user.photoURL;
     const history = useNavigate();
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
+        data.photo = photo;
         console.log(data);
         axios.post('https://waterparkserver.herokuapp.com/reviews', data)
             .then(res => {
