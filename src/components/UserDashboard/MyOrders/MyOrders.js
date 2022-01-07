@@ -106,7 +106,7 @@ const MyOrders = () => {
                             const razorpay_payment_id = response.razorpay_payment_id;
                             const razorpay_order_id = response.razorpay_order_id;
                             const razorpay_signature = response.razorpay_signature;
-                            const url = `http://localhost:5000/verifyOrder`;
+                            const url = `https://waterparkserver.herokuapp.com/verifyOrder`;
                             const captureResponse = await axios.post(url, response);
                             console.log(captureResponse);
                             if (captureResponse.data) {
