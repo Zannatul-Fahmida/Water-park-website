@@ -1,45 +1,37 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React from 'react';
 import { Col, Row, Button, FloatingLabel, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
+import swal from 'sweetalert';
+import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
-    // const [success, setSuccess] = useState('');
-    const { register, handleSubmit, reset } = useForm();
+    const {user} = useAuth();
+    const { register, handleSubmit } = useForm();
     const onSubmit = data => {
-        // console.log(data);
-        const loadingId = toast.loading("Please Wait...");
-        fetch('https://waterparkserver.herokuapp.com/users/admin',{
-            method: 'PUT',
+        console.log(data);
+        if (user.email === "test@admin.com" || "admin@admin.com") {
+            return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");;
+        }
+        const loading = toast.loading('Adding...Please wait!');
+        axios.put('http://localhost:5000/addAdmin', data, {
             headers: {
-                'content-type': 'application/json'
+                authorization: `Bearer ${localStorage.getItem('idToken')}`
             },
-            body:JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.modifiedCount){
-                console.log(data);
-                toast.success('Made Admin Successful!', {
-                    id: loadingId,
-                });
-            }
-            else {
-                toast.error('Please Enter Valid Email', {
-                    id: loadingId,
-                });
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.modifiedCount) {
-                    console.log(data);
-                    toast.success('Made admin')
+          })
+            .then(res => {
+                console.log(res);
+                toast.dismiss(loading);
+                if (res.data) {
+                    return swal("Successfully Added", `${data.email} has been successfully added as an admin.`, "success");
                 }
-                else {
-                    toast.error('Please Enter Valid Email')
-                }
+                swal("Failed!", "Something went wrong! Please try again.", "error", { dangerMode: true });
             })
+            .catch(error => {
+                toast.dismiss(loading);
+                swal("Failed Not hit api!", "Something went wrong! Please try again.", "error", { dangerMode: true })
+            });
     }
     return (
         <div className="d-flex justify-content-center flex-column">
@@ -51,11 +43,11 @@ const MakeAdmin = () => {
                             <Row>
                                 <Col xs={12}>
                                     <FloatingLabel className="mb-2" controlId="floatingPassword" label="Admin Email">
-                                        <Form.Control 
-                                        className="our-form-input"
-                                        type="email" 
-                                        {...register("email", { required: true })}
-                                        placeholder="Type Email Address" 
+                                        <Form.Control
+                                            className="our-form-input"
+                                            type="email"
+                                            {...register("email", { required: true })}
+                                            placeholder="Type Email Address"
                                         />
                                     </FloatingLabel>
                                 </Col>

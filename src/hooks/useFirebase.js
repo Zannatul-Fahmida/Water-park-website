@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, getIdToken, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeFirebase from '../pages/Login/firebase/firebase.init';
 
@@ -66,6 +66,8 @@ const useFirebase = () => {
     useEffect(() => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
+                getIdToken(user)
+                .then(idToken => localStorage.setItem('idToken', idToken))
                 setUser(user);
             } else {
                 setUser({})
