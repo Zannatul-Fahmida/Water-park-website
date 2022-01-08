@@ -43,8 +43,8 @@ function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="/membership" element={<Membership />} />
             <Route path={`/blogs/:blogId`} element={<FullBlog />} />
-            <Route path={`/booking/:id`} element={<PackageBooking />} />
-            <Route path={`/ridebooking/:id`} element={<RideBooking />} />
+            <Route path={`/booking/:id`} element={<PrivateRoute> <PackageBooking /></PrivateRoute>} />
+            <Route path={`/ridebooking/:id`} element={<PrivateRoute> <RideBooking /></PrivateRoute>} />
             <Route exact path={`/dashboard`} element={<PrivateRoute><MainDashboard /> </PrivateRoute>}>
               <Route path={`/dashboard/myBookings`} element={<MyOrders />}> </Route>
               <Route path={`/dashboard/sendReview`} element={<SendReview />}> </Route>
