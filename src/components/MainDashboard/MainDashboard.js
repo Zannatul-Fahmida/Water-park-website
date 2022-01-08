@@ -8,6 +8,7 @@ import './MainDashboard.css';
 import BarCharts from '../../components/UserDashboard/Charts/BarCharts';
 import BookingPieChart from '../../components/UserDashboard/Charts/BookingPieChart';
 import useAuth from '../../hooks/useAuth';
+import Users from '../UserDashboard/Users/Users';
 
 const MainDashboard = () => {
     const { admin } = useAuth();
@@ -191,35 +192,7 @@ const MainDashboard = () => {
                         </div>
                         {/* NEW CUSTOMER  */}
                         <div className="recentCustomers">
-                            <div className="cardHeader">
-                                <h2>Recent Customers</h2>
-                            </div>
-                            <table>
-                                <tr>
-                                    <td width="60px"><div className="imgBx"><img src="https://i.ibb.co/QHpYyt9/img1.jpg" alt="" /></div> </td>
-                                    <td><h4>David <br /> <span>Ita</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div className="imgBx"><img src="https://i.ibb.co/QHpYyt9/img1.jpg" alt="" /></div> </td>
-                                    <td><h4>David <br /> <span>Ita</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div className="imgBx"><img src="https://i.ibb.co/QHpYyt9/img1.jpg" alt="" /></div> </td>
-                                    <td><h4>David <br /> <span>Ita</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div className="imgBx"><img src="https://i.ibb.co/QHpYyt9/img1.jpg" alt="" /></div> </td>
-                                    <td><h4>David <br /> <span>Ita</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div className="imgBx"><img src="https://i.ibb.co/QHpYyt9/img1.jpg" alt="" /></div> </td>
-                                    <td><h4>David <br /> <span>Ita</span></h4></td>
-                                </tr>
-                                <tr>
-                                    <td width="60px"><div className="imgBx"><img src="https://i.ibb.co/QHpYyt9/img1.jpg" alt="" /></div> </td>
-                                    <td><h4>David <br /> <span>Ita</span></h4></td>
-                                </tr>
-                            </table>
+                            <Users />
                         </div>
                     </div>
                 </div>

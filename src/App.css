@@ -48,3 +48,10 @@
 .footer a {
   text-decoration: none;
 }
+.user-box {
+  width: 229px;
+  margin-bottom: 5px;
+}
+.user-box img {
+  width: 60px;
+}
