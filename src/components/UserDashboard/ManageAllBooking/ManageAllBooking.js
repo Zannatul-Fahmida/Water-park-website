@@ -12,8 +12,13 @@ const ManageAllBooking = () => {
     const dispatch = useDispatch();
     const booking = useSelector((state) => state.booking.allOrders)
     console.log(booking);
+    const headers = {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('idToken')}`
+        }
+      };
     useEffect(() => {
-        dispatch(fetchAllOrders())
+        dispatch(fetchAllOrders(headers))
         setLoading(false)
     }, [])
 

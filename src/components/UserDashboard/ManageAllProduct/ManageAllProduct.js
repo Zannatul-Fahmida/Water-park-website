@@ -13,7 +13,11 @@ const ManageAllProduct = () => {
     const history = useNavigate();
 
     useEffect(() => {
-        fetch('https://waterparkserver.herokuapp.com/rides')
+        fetch('http://localhost:5000/rides', {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('idToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setCars(data);
