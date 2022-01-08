@@ -17,7 +17,7 @@ const MyOrders = () => {
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/booking/${user.email}`, {
+        fetch(`https://waterparkserver.herokuapp.com/booking/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             }

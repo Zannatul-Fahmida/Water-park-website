@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Col, Row, Button, FloatingLabel, Form } from 'react-bootstrap';
+import { Button, Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import swal from 'sweetalert';
@@ -15,7 +15,7 @@ const MakeAdmin = () => {
             return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");;
         }
         const loading = toast.loading('Adding...Please wait!');
-        axios.put('http://localhost:5000/addAdmin', data, {
+        axios.put('https://waterparkserver.herokuapp.com/addAdmin', data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             },
