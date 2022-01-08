@@ -63,8 +63,8 @@ export const addNewRide = createAsyncThunk(
 // FET ALL ORDER
 export const fetchAllOrders = createAsyncThunk(
     'order/fetchAllOrders',
-    async (headers) => {
-        const response = await fetch("http://localhost:5000/booking", headers)
+    async () => {
+        const response = await fetch("https://waterparkserver.herokuapp.com/booking")
             .then(res => res.json())
         return response;
     }
