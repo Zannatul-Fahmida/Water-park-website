@@ -484,4 +484,7 @@
         left: initial;
         color: #fff;
     }
+    .chartBox {
+        min-height: 250px;
+    }
 }

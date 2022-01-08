@@ -32,7 +32,7 @@ const Users = () => {
                                 <Image
                                     ref={ref}
                                     roundedCircle
-                                    src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                                    src={user.photoURL || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png"}
                                 />
                                 <span className="ms-1">{user.displayName}</span>
                             </Button>

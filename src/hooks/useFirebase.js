@@ -20,7 +20,8 @@ const useFirebase = () => {
                 setAuthError('');
                 const newUser = { email, displayName: name };
                 setUser(newUser);
-                saveUser(email, name, 'POST');
+                const photoURL = "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+                saveUser(email, name, photoURL, 'POST');
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
@@ -53,7 +54,7 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
-                saveUser(user.email, user.displayName, 'PUT');
+                saveUser(user.email, user.displayName, user.photoURL, 'PUT');
                 setAuthError('');
                 const destination = location?.state?.from || '/';
                 navigate(destination);
@@ -98,8 +99,8 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    const saveUser = (email, displayName, method) => {
-        const user = { email, displayName };
+    const saveUser = (email, displayName,photoURL, method) => {
+        const user = { email, displayName, photoURL };
         fetch('https://waterparkserver.herokuapp.com/users', {
             method: method,
             headers: {
