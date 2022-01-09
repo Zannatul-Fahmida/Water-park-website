@@ -9,6 +9,7 @@ import NavTop from '../../pages/Shared/NavTop/NavTop';
 import Navigation from '../../pages/Shared/Navigation/Navigation';
 import Footer from '../../pages/Shared/Footer/Footer';
 import slider from '../../images/28361 [Converted].png';
+import '../../pages/PackageBooking/PackageBooking.css';
 
 const RideBooking = () => {
     const { id } = useParams();

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import logo from '../../../images/268400530_373968071167259_3189583390863392829_n.png';
+import '../../Home/Holiday/Holiday.css';
 
 const Footer = () => {
     return (

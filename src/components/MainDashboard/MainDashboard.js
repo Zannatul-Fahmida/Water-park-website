@@ -7,10 +7,10 @@ import ProfilePopper from '../../components/ProfilePopper/ProfilePopper';
 import './MainDashboard.css';
 import BarCharts from '../../components/UserDashboard/Charts/BarCharts';
 import BookingPieChart from '../../components/UserDashboard/Charts/BookingPieChart';
-import useFirebase from '../../hooks/useFirebase';
+import useAuth from '../../hooks/useAuth';
 
 const MainDashboard = () => {
-    const { admin } = useFirebase();
+    const { admin } = useAuth();
     const [isActive, setActive] = useState(false);
     const handleToggle = () => {
         setActive(!isActive)

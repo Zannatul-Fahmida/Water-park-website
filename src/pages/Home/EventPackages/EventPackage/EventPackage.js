@@ -29,7 +29,7 @@ const EventPackage = () => {
                 </div>
                 <Row>
                     {
-                        packages.map(price => <Col lg={3} md={4} sm={6} xs={12} className="package">
+                        packages.map(price => <Col lg={3} md={4} sm={6} xs={12} className="package my-3">
                             <>
                                 <Fade bottom duration={1000} distance="40px">
                                     <div className="pricing-card">
