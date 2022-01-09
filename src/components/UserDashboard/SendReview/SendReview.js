@@ -14,7 +14,7 @@ const SendReview = () => {
     const onSubmit = data => {
         data.photo = photo;
         console.log(data);
-        axios.post('https://waterparkserver.herokuapp.com/reviews', data)
+        axios.post('http://localhost:5000/reviews', data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Thank for Your Feedback!')

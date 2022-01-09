@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Row, Button, Image } from 'react-bootstrap';
+import { Button, Col, Container, Image, Row } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
-import toast, { Toaster } from 'react-hot-toast';
-import { useForm } from 'react-hook-form';
-import NavTop from '../../pages/Shared/NavTop/NavTop';
-import Navigation from '../../pages/Shared/Navigation/Navigation';
-import Footer from '../../pages/Shared/Footer/Footer';
 import slider from '../../images/28361 [Converted].png';
+import Footer from '../../pages/Shared/Footer/Footer';
+import Navigation from '../../pages/Shared/Navigation/Navigation';
+import NavTop from '../../pages/Shared/NavTop/NavTop';
 
 const RideBooking = () => {
     const { id } = useParams();
@@ -19,7 +19,7 @@ const RideBooking = () => {
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
+        const url = `http://localhost:5000/rides/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setSpecificDetail(data))
@@ -31,7 +31,7 @@ const RideBooking = () => {
         data.amount = price;
         data.status = "Pending";
         data.orderTime = new Date().toLocaleDateString('en-GB');
-        axios.post('https://waterparkserver.herokuapp.com/booking', data)
+        axios.post('http://localhost:5000/booking', data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Booking Succesful')

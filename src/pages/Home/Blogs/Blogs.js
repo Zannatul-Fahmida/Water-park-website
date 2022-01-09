@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Container, Row } from 'react-bootstrap';
-import './Blogs.css';
+import { Container, Row } from 'react-bootstrap';
 import Jump from 'react-reveal/Jump';
 import Blog from '../Blog/Blog';
+import './Blogs.css';
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
-        fetch('https://waterparkserver.herokuapp.com/blogs')
+        fetch('http://localhost:5000/blogs')
             .then(res => res.json())
             .then(data => setBlogs(data))
     }, []);

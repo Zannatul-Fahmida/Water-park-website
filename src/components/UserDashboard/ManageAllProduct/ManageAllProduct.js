@@ -13,7 +13,7 @@ const ManageAllProduct = () => {
     const history = useNavigate();
 
     useEffect(() => {
-        fetch('https://waterparkserver.herokuapp.com/rides')
+        fetch('http://localhost:5000/rides')
             .then(res => res.json())
             .then(data => {
                 setCars(data);
@@ -51,7 +51,7 @@ const ManageAllProduct = () => {
         }).then(proceed => {
             if (proceed) {
                 const loading = toast.loading("Deleting...")
-                const url = `https://waterparkserver.herokuapp.com/rides/${id}`
+                const url = `http://localhost:5000/rides/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })

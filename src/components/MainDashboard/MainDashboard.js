@@ -179,7 +179,7 @@ const MainDashboard = () => {
                             <BookingPieChart />
                         </div>
                         <div className="chartBox">
-                            <BarCharts />
+                            {/* <BarCharts /> */}
                         </div>
                     </div>
                     {/* DETAILS  */}

@@ -17,7 +17,7 @@ const MyOrders = () => {
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`https://waterparkserver.herokuapp.com/booking/${user.email}`, {
+        fetch(`http://localhost:5000/booking/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             }
@@ -77,7 +77,7 @@ const MyOrders = () => {
 
         const modifiedStatus = { id, status }
 
-        axios.patch(`https://waterparkserver.herokuapp.com/booking/${id}`, modifiedStatus)
+        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => alert(error.message))
     }
@@ -95,7 +95,7 @@ const MyOrders = () => {
                 key2: "value2"
             }
         }
-        axios.post('https://waterparkserver.herokuapp.com/createOrder', orderData)
+        axios.post('http://localhost:5000/createOrder', orderData)
             .then(res => {
                 const response = res;
                 const { data } = response;
@@ -110,7 +110,7 @@ const MyOrders = () => {
                             const razorpay_payment_id = response.razorpay_payment_id;
                             const razorpay_order_id = response.razorpay_order_id;
                             const razorpay_signature = response.razorpay_signature;
-                            const url = `https://waterparkserver.herokuapp.com/verifyOrder`;
+                            const url = `http://localhost:5000/verifyOrder`;
                             const captureResponse = await axios.post(url, response);
                             console.log(captureResponse);
                             if (captureResponse.data) {
@@ -118,7 +118,7 @@ const MyOrders = () => {
 
                                 const invoice = { razorpay_payment_id, razorpay_order_id, razorpay_signature, ...captureResponse.data };
                                 console.log("inovoice", invoice);
-                                axios.patch(`https://waterparkserver.herokuapp.com/bookingUpdate/${bookingId}`, invoice)
+                                axios.patch(`http://localhost:5000/bookingUpdate/${bookingId}`, invoice)
                                     .then(res => {
                                         if(res.data.modifiedCount === 1){
                                             toast.success("Booking Updated")
@@ -150,7 +150,7 @@ const MyOrders = () => {
         }).then(wantDelete => {
             if (wantDelete) {
                 const loadingId = toast.loading("Deleting...");
-                const url = `https://waterparkserver.herokuapp.com/booking/${id}`
+                const url = `http://localhost:5000/booking/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })

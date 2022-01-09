@@ -2,15 +2,15 @@ import { scaleOrdinal } from 'd3-scale';
 import { schemeCategory10 } from 'd3-scale-chromatic';
 import React, { useEffect, useState } from 'react';
 import { Bar, BarChart, Cell, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
-import useFirebase from '../../../hooks/useFirebase';
+import useAuth from '../../../hooks/useAuth';
 
 const BarCharts = () => {
     const colors = scaleOrdinal(schemeCategory10).range();
-    const { user } = useFirebase();
+    const { user } = useAuth();
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`https://waterparkserver.herokuapp.com/booking/${user.email}`)
+        fetch(`http://localhost:5000/booking/${user.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyBookings(data)
@@ -30,7 +30,7 @@ const BarCharts = () => {
                     <Tooltip itemStyle={{ color: "white" }} contentStyle={{ backgroundColor: "#FF8042" }} />
                     <Legend />
                     <Bar dataKey="amount" fill="#8884d8">
-                        {myBookings.map((entry, index) => (
+                        {myBookings?.map((entry, index) => (
                             <Cell key={`cell-${index}`} fill={colors[index % 20]} />
                         ))}
                     </Bar>

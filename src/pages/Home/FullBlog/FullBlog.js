@@ -9,7 +9,7 @@ const FullBlog = () => {
     const { blogId } = useParams();
     const [blog, setBlog] = useState({});
     useEffect(() => {
-        fetch(`https://waterparkserver.herokuapp.com/blogs/${blogId}`)
+        fetch(`http://localhost:5000/blogs/${blogId}`)
             .then(res => res.json())
             .then(data => {
                 setBlog(data)

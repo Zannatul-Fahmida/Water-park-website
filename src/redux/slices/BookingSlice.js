@@ -6,7 +6,7 @@ import swal from "sweetalert";
 export const fetchReviews = createAsyncThunk(
     'reviews/fetchReviews',
     async () => {
-        const response = await fetch("https://waterparkserver.herokuapp.com/reviews")
+        const response = await fetch("http://localhost:5000/reviews")
             .then((res) => res.json())
         return response;
     }
@@ -15,7 +15,7 @@ export const fetchReviews = createAsyncThunk(
 export const fetchRides = createAsyncThunk(
     'rides/fetchRides',
     async () => {
-        const response = await fetch("https://waterparkserver.herokuapp.com/rides")
+        const response = await fetch("http://localhost:5000/rides")
             .then((res) => res.json())
         return response;
     }
@@ -24,7 +24,7 @@ export const fetchRides = createAsyncThunk(
 export const fetchPackages = createAsyncThunk(
     'packages/fetchPackages',
     async () => {
-        const response = await fetch("https://waterparkserver.herokuapp.com/packages")
+        const response = await fetch("http://localhost:5000/packages")
             .then((res) => res.json())
         return response;
     }
@@ -33,7 +33,7 @@ export const postPackageBooking = createAsyncThunk(
     "booking/postPackageBooking",
     async (data) => {
         const loading = toast.loading("Loading...");
-        const response = await axios.post("https://waterparkserver.herokuapp.com/booking", data)
+        const response = await axios.post("http://localhost:5000/booking", data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.dismiss(loading);
@@ -48,7 +48,7 @@ export const addNewRide = createAsyncThunk(
     'rides/postNewRide',
     async (data) => {
         const loading = toast.loading("Loading...")
-        const response = await axios.post("https://waterparkserver.herokuapp.com/rides", data)
+        const response = await axios.post("http://localhost:5000/rides", data)
             .then(res => {
                 if (res.data.insertedId) {
                     toast.success('Added', {
@@ -63,8 +63,8 @@ export const addNewRide = createAsyncThunk(
 // FET ALL ORDER
 export const fetchAllOrders = createAsyncThunk(
     'order/fetchAllOrders',
-    async () => {
-        const response = await fetch("https://waterparkserver.herokuapp.com/booking")
+    async (headers) => {
+        const response = await fetch("http://localhost:5000/booking", headers)
             .then(res => res.json())
         return response;
     }
@@ -74,7 +74,7 @@ export const deleteOrder = createAsyncThunk(
     'order/deleteOrder',
     async (id) => {
         const loading = toast.loading("Loading...")
-        const response = await axios.delete(`https://waterparkserver.herokuapp.com/booking/${id}`)
+        const response = await axios.delete(`http://localhost:5000/booking/${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
                     toast.success('Deleted', {
@@ -93,7 +93,7 @@ export const deleteOrder = createAsyncThunk(
 export const deleteRide = createAsyncThunk(
     'rides/deleteRide',
     async (id) => {
-        const response = await axios.delete(`https://waterparkserver.herokuapp.com/rides/${id}`)
+        const response = await axios.delete(`http://localhost:5000/rides/${id}`)
             .then(res => {
                 if (res.data.deletedCount > 0) {
                     toast.success('Ride Deleted')

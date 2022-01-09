@@ -80,7 +80,7 @@ const useFirebase = () => {
 
      // admin checking
      useEffect(() => {
-        fetch(`https://waterparkserver.herokuapp.com/users/${user.email}`, {
+        fetch(`http://localhost:5000/users/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             }
@@ -101,7 +101,7 @@ const useFirebase = () => {
 
     const saveUser = (email, displayName,photoURL, method) => {
         const user = { email, displayName, photoURL };
-        fetch('https://waterparkserver.herokuapp.com/users', {
+        fetch('http://localhost:5000/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

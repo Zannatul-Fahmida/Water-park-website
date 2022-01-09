@@ -11,7 +11,7 @@ const Update = () => {
     const history = useNavigate();                
     const onSubmit = data => {
         console.log(data)
-        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
+        const url = `http://localhost:5000/rides/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -31,7 +31,7 @@ const Update = () => {
     console.log(ride);
 
     useEffect(() => {
-        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
+        const url = `http://localhost:5000/rides/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setRide(data))

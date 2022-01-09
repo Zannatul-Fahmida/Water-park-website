@@ -5,7 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import swal from 'sweetalert';
-import { addToAllOrder, deleteOrder, fetchAllOrders, removeFromAllOrders } from '../../../redux/slices/BookingSlice';
+import { deleteOrder, fetchAllOrders, removeFromAllOrders } from '../../../redux/slices/BookingSlice';
 
 const ManageAllBooking = () => {
     const [loading, setLoading] = useState(true);
@@ -46,7 +46,7 @@ const ManageAllBooking = () => {
     const handleStatusChange = (id, status) => {
         const modifiedStatus = { id, status }
 
-        axios.patch(`https://waterparkserver.herokuapp.com/booking/${id}`, modifiedStatus)
+        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => alert(error.message))
     }

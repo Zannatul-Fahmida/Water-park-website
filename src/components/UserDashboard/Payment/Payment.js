@@ -30,7 +30,7 @@ const Payment = () => {
                 key2: "value2"
             }
         }
-        axios.post('https://waterparkserver.herokuapp.com/createOrder', orderData)
+        axios.post('http://localhost:5000/createOrder', orderData)
             .then(res => {
                 const response = res;
                 const { data } = response;
@@ -43,7 +43,7 @@ const Payment = () => {
                     handler: async (response) => {
                         try {
                             const paymentId = response.razorpay_payment_id;
-                            const url = `https://waterparkserver.herokuapp.com/capture/${paymentId}`;
+                            const url = `http://localhost:5000/capture/${paymentId}`;
                             const captureResponse = await Axios.post(url, {});
                             console.log(captureResponse.data);
                             window.location.reload();

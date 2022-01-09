@@ -15,7 +15,7 @@ const MakeAdmin = () => {
             return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");;
         }
         const loading = toast.loading('Adding...Please wait!');
-        axios.put('https://waterparkserver.herokuapp.com/addAdmin', data, {
+        axios.put('http://localhost:5000/addAdmin', data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             },
