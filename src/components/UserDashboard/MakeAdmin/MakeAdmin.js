@@ -7,7 +7,7 @@ import swal from 'sweetalert';
 import useAuth from '../../../hooks/useAuth';
 
 const MakeAdmin = () => {
-    const {user} = useAuth();
+    const { user } = useAuth();
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
@@ -15,11 +15,11 @@ const MakeAdmin = () => {
             return swal("Permission restriction!", "As a test-admin, you don't have this permission.", "info");;
         }
         const loading = toast.loading('Adding...Please wait!');
-        axios.put('http://localhost:5000/addAdmin', data, {
+        axios.put('https://waterparkserver.herokuapp.com/addAdmin', data, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             },
-          })
+        })
             .then(res => {
                 console.log(res);
                 toast.dismiss(loading);

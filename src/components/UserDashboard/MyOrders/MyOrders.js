@@ -17,7 +17,7 @@ const MyOrders = () => {
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/booking/${user.email}`, {
+        fetch(`https://waterparkserver.herokuapp.com/booking/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             }
@@ -30,7 +30,7 @@ const MyOrders = () => {
     }, [user.email]);
     // HANDLE DOWNLOAD
     const handleGeneratPdf = (order) => {
-        const { _id, status,packageName,razorpay_payment_id,razorpay_order_id,  name, email, phone, amount } = order;
+        const { _id, status, packageName, razorpay_payment_id, razorpay_order_id, name, email, phone, amount } = order;
         console.log(order);
         let doc = new jsPDF('landscape', 'px', 'a4', 'false');
         doc.addImage(logo, 'PNG', 65, 20, 120, 60)
@@ -49,7 +49,7 @@ const MyOrders = () => {
         doc.text(60, 220, 'Package Id : ')
         doc.text(60, 240, 'Order Id : ')
         doc.text(60, 260, 'Payment Id : ')
-        doc.text(460,120, 'Status : ')
+        doc.text(460, 120, 'Status : ')
         doc.setFont('IBM Plex Serif', 'bold')
         doc.text(160, 120, name)
         doc.text(160, 140, email)
@@ -77,7 +77,7 @@ const MyOrders = () => {
 
         const modifiedStatus = { id, status }
 
-        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
+        axios.patch(`https://waterparkserver.herokuapp.com/booking/${id}`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => alert(error.message))
     }
@@ -95,7 +95,7 @@ const MyOrders = () => {
                 key2: "value2"
             }
         }
-        axios.post('http://localhost:5000/createOrder', orderData)
+        axios.post('https://waterparkserver.herokuapp.com/createOrder', orderData)
             .then(res => {
                 const response = res;
                 const { data } = response;
@@ -110,7 +110,7 @@ const MyOrders = () => {
                             const razorpay_payment_id = response.razorpay_payment_id;
                             const razorpay_order_id = response.razorpay_order_id;
                             const razorpay_signature = response.razorpay_signature;
-                            const url = `http://localhost:5000/verifyOrder`;
+                            const url = `https://waterparkserver.herokuapp.com/verifyOrder`;
                             const captureResponse = await axios.post(url, response);
                             console.log(captureResponse);
                             if (captureResponse.data) {
@@ -118,9 +118,9 @@ const MyOrders = () => {
 
                                 const invoice = { razorpay_payment_id, razorpay_order_id, razorpay_signature, ...captureResponse.data };
                                 console.log("inovoice", invoice);
-                                axios.patch(`http://localhost:5000/bookingUpdate/${bookingId}`, invoice)
+                                axios.patch(`https://waterparkserver.herokuapp.com/bookingUpdate/${bookingId}`, invoice)
                                     .then(res => {
-                                        if(res.data.modifiedCount === 1){
+                                        if (res.data.modifiedCount === 1) {
                                             toast.success("Booking Updated")
                                         }
                                     })
@@ -150,7 +150,7 @@ const MyOrders = () => {
         }).then(wantDelete => {
             if (wantDelete) {
                 const loadingId = toast.loading("Deleting...");
-                const url = `http://localhost:5000/booking/${id}`
+                const url = `https://waterparkserver.herokuapp.com/booking/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
@@ -202,7 +202,7 @@ const MyOrders = () => {
                                 <td>{order.bookingDate}</td>
                                 <td>
                                     <span className={order.status === "Pending" ? "status pending" : order.status === "On going" ? "status inprogress" : order.status === "Done" ? "status delivered" : null}>{order.status}</span>
-                                   
+
                                 </td>
                                 <td>
                                     {
@@ -210,8 +210,8 @@ const MyOrders = () => {
                                             <Button onClick={() => handleGeneratPdf(order)} variant="info bg-info m-1" className='white-space-off'>Download Invoice</Button>
                                             :
                                             <div className='d-flex'>
-                                            <Button onClick={() => handlePay(order)} variant="success" className='white-space-off'>Pay Now</Button>
-                                            <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger ms-1" className='white-space-off'>Cancel</Button>
+                                                <Button onClick={() => handlePay(order)} variant="success" className='white-space-off'>Pay Now</Button>
+                                                <Button onClick={() => handleDelete(order._id)} variant="danger bg-danger ms-1" className='white-space-off'>Cancel</Button>
                                             </div>
                                     }
                                 </td>

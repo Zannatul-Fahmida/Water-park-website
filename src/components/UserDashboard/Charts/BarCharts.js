@@ -10,14 +10,18 @@ const BarCharts = () => {
     const [myBookings, setMyBookings] = useState([]);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/booking/${user.email}`)
+        fetch(`https://waterparkserver.herokuapp.com/booking/${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('idToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
                 setMyBookings(data)
                 setLoading(false);
             })
     }, [user.email]);
-    if(loading){
+    if (loading) {
 
     }
     return (
@@ -25,7 +29,7 @@ const BarCharts = () => {
             <h4>Bookings</h4>
             <ResponsiveContainer width="100%" aspect={3}>
                 <BarChart data={myBookings} width={500} height={300} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                    <XAxis dataKey="packageName" interval={'preserveStartEnd'} itemStyle={{ color: "white" }}/>
+                    <XAxis dataKey="packageName" interval={'preserveStartEnd'} itemStyle={{ color: "white" }} />
                     <YAxis />
                     <Tooltip itemStyle={{ color: "white" }} contentStyle={{ backgroundColor: "#FF8042" }} />
                     <Legend />
@@ -34,7 +38,7 @@ const BarCharts = () => {
                             <Cell key={`cell-${index}`} fill={colors[index % 20]} />
                         ))}
                     </Bar>
-                    <Bar dataKey="Empty" fill="#ffc658"/>
+                    <Bar dataKey="Empty" fill="#ffc658" />
                 </BarChart>
             </ResponsiveContainer>
         </div>

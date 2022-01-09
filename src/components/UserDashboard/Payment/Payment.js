@@ -30,7 +30,7 @@ const Payment = () => {
                 key2: "value2"
             }
         }
-        axios.post('http://localhost:5000/createOrder', orderData)
+        axios.post('https://waterparkserver.herokuapp.com/createOrder', orderData)
             .then(res => {
                 const response = res;
                 const { data } = response;
@@ -43,7 +43,7 @@ const Payment = () => {
                     handler: async (response) => {
                         try {
                             const paymentId = response.razorpay_payment_id;
-                            const url = `http://localhost:5000/capture/${paymentId}`;
+                            const url = `https://waterparkserver.herokuapp.com/capture/${paymentId}`;
                             const captureResponse = await Axios.post(url, {});
                             console.log(captureResponse.data);
                             window.location.reload();
@@ -70,14 +70,14 @@ const Payment = () => {
                             <Row className="align-items-center">
                                 <Col xs={12} className="d-flex align-items-center justify-content-center my-3">
                                     <div className="w-75">
-                                    <input
-                                        className="our-form-input"
-                                        type="number"
-                                        {...register("amount", { required: true, min: 1, max: 99 })}
-                                        defaultValue=""
-                                        placeholder='Only 2 digit Number Enter Like- "15"'
+                                        <input
+                                            className="our-form-input"
+                                            type="number"
+                                            {...register("amount", { required: true, min: 1, max: 99 })}
+                                            defaultValue=""
+                                            placeholder='Only 2 digit Number Enter Like- "15"'
                                         />
-                                    {errors.amount && "Enter Correct Amount"}
+                                        {errors.amount && "Enter Correct Amount"}
                                     </div>
                                     <div className="text-center">
                                         <Button type="submit" className="btn-main py-0 py-md-2">

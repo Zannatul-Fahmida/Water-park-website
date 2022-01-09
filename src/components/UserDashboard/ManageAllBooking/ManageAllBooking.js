@@ -16,7 +16,7 @@ const ManageAllBooking = () => {
         headers: {
             authorization: `Bearer ${localStorage.getItem('idToken')}`
         }
-      };
+    };
     useEffect(() => {
         dispatch(fetchAllOrders(headers))
         setLoading(false)
@@ -34,11 +34,11 @@ const ManageAllBooking = () => {
         }).then(wantDelete => {
             if (wantDelete) {
                 dispatch(deleteOrder(id))
-                .then(res =>{
-                    if(res.meta.requestStatus === "fulfilled"){
-                        dispatch(removeFromAllOrders(id))
-                    }
-                })
+                    .then(res => {
+                        if (res.meta.requestStatus === "fulfilled") {
+                            dispatch(removeFromAllOrders(id))
+                        }
+                    })
             }
         })
     }
@@ -46,7 +46,7 @@ const ManageAllBooking = () => {
     const handleStatusChange = (id, status) => {
         const modifiedStatus = { id, status }
 
-        axios.patch(`http://localhost:5000/booking/${id}`, modifiedStatus)
+        axios.patch(`https://waterparkserver.herokuapp.com/booking/${id}`, modifiedStatus)
             .then(res => res.data && toast.success(`Set to ${status}`))
             .catch(error => alert(error.message))
     }
@@ -78,7 +78,7 @@ const ManageAllBooking = () => {
                                 <td>{order?.name?.toUpperCase()}</td>
                                 <td>{order?.packageName}</td>
                                 <td>${order?.amount}</td>
-                                <td>{order?.email?.slice(0,8)}...</td>
+                                <td>{order?.email?.slice(0, 8)}...</td>
                                 <td>{order?.orderTime}</td>
                                 <td>
                                     <select

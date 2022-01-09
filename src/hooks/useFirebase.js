@@ -68,7 +68,7 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 getIdToken(user)
-                .then(idToken => localStorage.setItem('idToken', idToken))
+                    .then(idToken => localStorage.setItem('idToken', idToken))
                 setUser(user);
             } else {
                 setUser({})
@@ -78,9 +78,9 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [auth])
 
-     // admin checking
-     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`, {
+    // admin checking
+    useEffect(() => {
+        fetch(`https://waterparkserver.herokuapp.com/users/${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('idToken')}`
             }
@@ -99,9 +99,9 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    const saveUser = (email, displayName,photoURL, method) => {
+    const saveUser = (email, displayName, photoURL, method) => {
         const user = { email, displayName, photoURL };
-        fetch('http://localhost:5000/users', {
+        fetch('https://waterparkserver.herokuapp.com/users', {
             method: method,
             headers: {
                 'content-type': 'application/json'

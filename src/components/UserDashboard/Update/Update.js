@@ -8,10 +8,10 @@ const Update = () => {
     const { id } = useParams();
     const [ride, setRide] = useState({});
     const { register, handleSubmit } = useForm();
-    const history = useNavigate();                
+    const history = useNavigate();
     const onSubmit = data => {
         console.log(data)
-        const url = `http://localhost:5000/rides/${id}`
+        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -31,7 +31,7 @@ const Update = () => {
     console.log(ride);
 
     useEffect(() => {
-        const url = `http://localhost:5000/rides/${id}`
+        const url = `https://waterparkserver.herokuapp.com/rides/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setRide(data))

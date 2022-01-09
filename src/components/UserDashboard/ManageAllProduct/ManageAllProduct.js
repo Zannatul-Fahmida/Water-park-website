@@ -13,7 +13,7 @@ const ManageAllProduct = () => {
     const history = useNavigate();
 
     useEffect(() => {
-        fetch('http://localhost:5000/rides')
+        fetch('https://waterparkserver.herokuapp.com/rides')
             .then(res => res.json())
             .then(data => {
                 setCars(data);
@@ -33,7 +33,7 @@ const ManageAllProduct = () => {
         }
         if (user.email === "admin@admin.com" && matchedID) {
             return true;
-        } 
+        }
         return false;
     }
 
@@ -51,7 +51,7 @@ const ManageAllProduct = () => {
         }).then(proceed => {
             if (proceed) {
                 const loading = toast.loading("Deleting...")
-                const url = `http://localhost:5000/rides/${id}`
+                const url = `https://waterparkserver.herokuapp.com/rides/${id}`
                 fetch(url, {
                     method: 'DELETE'
                 })
