@@ -38,7 +38,7 @@ const PackageBooking = () => {
                 if (res.data.insertedId) {
                     toast.success('Booking Successful')
                     reset();
-                    history.push('/carsCollection')
+                    history('/')
                 }
             })
     }

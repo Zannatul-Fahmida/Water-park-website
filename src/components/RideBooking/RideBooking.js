@@ -13,7 +13,7 @@ import slider from '../../images/28361 [Converted].png';
 const RideBooking = () => {
     const { id } = useParams();
     const { user } = useFirebase();
-    const history = useNavigate();
+    const navigate = useNavigate();
     const [specificDetail, setSpecificDetail] = useState({});
     const { name, price } = specificDetail;
     const { register, handleSubmit, reset } = useForm();
@@ -36,7 +36,7 @@ const RideBooking = () => {
                 if (res.data.insertedId) {
                     toast.success('Booking Succesful')
                     reset();
-                    history.push('/carsCollection')
+                    navigate('/rides')
                 }
             })
     }
