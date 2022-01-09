@@ -24,7 +24,7 @@
         width: auto;
     }
     .img-gallery img {
-        width: 330px !important;
+        width: 378px !important;
         object-fit: cover;
     }
 }
