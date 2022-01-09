@@ -6,9 +6,13 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useNavigate, useParams } from 'react-router-dom';
 import useFirebase from '../../hooks/useFirebase';
 import slider from '../../images/28361 [Converted].png';
+<<<<<<< HEAD
 import Footer from '../../pages/Shared/Footer/Footer';
 import Navigation from '../../pages/Shared/Navigation/Navigation';
 import NavTop from '../../pages/Shared/NavTop/NavTop';
+=======
+import '../../pages/PackageBooking/PackageBooking.css';
+>>>>>>> 4d99d6493972279bde325662a1adcfefc54dbded
 
 const RideBooking = () => {
     const { id } = useParams();
