@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+.information-btn{
+  font-weight: bold;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+}
+.information-btn:hover{
+  color: #0dcaf0;
+}
+.footer a {
+  text-decoration: none;
+}
+.user-box {
+  width: 229px;
+  margin-bottom: 5px;
+}
+.user-box img {
+  width: 60px;
+}
